@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions - Institut</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --marron-fonce: #5D4037;
+      --marron-clair: #8D6E63;
+      --jaune-vif: #FFD54F;
+      --jaune-pale: #FFF176;
+      --blanc: #FFFFFF;
+      --noir: #212121;
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset et styles de base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: var(--noir);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-brand img {
+      margin-right: 10px;
+      transition: var(--transition);
+    }
+
+    .navbar-brand:hover img {
+      transform: rotate(5deg);
+    }
+
+    .nav-link {
+      position: relative;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem !important;
+      color: rgba(255, 255, 255, 0.9) !important;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 2px;
+      background-color: var(--jaune-vif);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover {
+      color: white !important;
+    }
+
+    .nav-link:hover::before {
+      width: 70%;
+    }
+
+    .nav-link.active {
+      color: var(--jaune-vif) !important;
+      font-weight: 600;
+    }
+
+    .nav-link.active::before {
+      width: 70%;
+    }
+
+    /* Hero Section */
+    .hero-admissions {
+      background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(141, 110, 99, 0.8)), 
+                  url('https://source.unsplash.com/random/1600x900?university-entrance') center/cover no-repeat;
+      color: white;
+      padding: 8rem 0;
+      text-align: center;
+      position: relative;
+      margin-bottom: 3rem;
+    }
+
+    .hero-admissions::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, #f9f9f9, transparent);
+    }
+
+    .hero-admissions h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-admissions p {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      opacity: 0.9;
+    }
+
+    /* Processus d'admission */
+    .admission-process {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      position: relative;
+      margin-bottom: 3rem;
+      color: var(--marron-fonce);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
+      border-radius: 2px;
+    }
+
+    .admission-step {
+      position: relative;
+      padding: 2rem;
+      background-color: var(--blanc);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      margin-bottom: 2rem;
+      transition: var(--transition);
+      height: 100%;
+      opacity: 0;
+    }
+
+    .admission-step:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 28px rgba(93, 64, 55, 0.2);
+    }
+
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--jaune-vif), var(--jaune-pale));
+      color: var(--marron-fonce);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-icon {
+      font-size: 1.5rem;
+      color: var(--marron-clair);
+      margin-right: 0.5rem;
+    }
+
+    .step-title {
+      color: var(--marron-fonce);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .list-unstyled li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .list-unstyled li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--marron-clair);
+      font-weight: bold;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      padding: 5rem 0;
+      background-color: #f5f5f5;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 50px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--jaune-vif), var(--marron-clair));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-left: 30px;
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+    }
+
+    .timeline-item:hover {
+      transform: translateX(5px);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 1.5rem;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: var(--marron-fonce);
+      border: 4px solid var(--jaune-vif);
+      z-index: 1;
+    }
+
+    .timeline-date {
+      color: var(--marron-clair);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Formulaire */
+    .form-section {
+      padding: 5rem 0;
+    }
+
+    .form-container {
+      background-color: var(--blanc);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-title {
+      color: var(--marron-fonce);
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .form-control:focus {
+      border-color: var(--jaune-vif);
+      box-shadow: 0 0 0 0.25rem rgba(255, 213, 79, 0.25);
+    }
+
+    .btn-apply {
+      background: linear-gradient(135deg, var(--jaune-vif), var(--jaune-pale));
+      color: var(--marron-fonce);
+      font-weight: 600;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-apply:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 213, 79, 0.4);
+    }
+
+    .btn-apply i {
+      margin-right: 0.5rem;
+    }
+
+    /* FAQ */
+    .faq-section {
+      padding: 5rem 0;
+      background-color: #f5f5f5;
+    }
+
+    .accordion-item {
+      border-radius: 8px !important;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      border: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .accordion-button {
+      font-weight: 600;
+      color: var(--marron-fonce);
+      background-color: white;
+    }
+
+    .accordion-button:not(.collapsed) {
+      color: var(--marron-fonce);
+      background-color: rgba(255, 213, 79, 0.1);
+    }
+
+    .accordion-button:focus {
+      box-shadow: 0 0 0 0.25rem rgba(255, 213, 79, 0.25);
+      border-color: var(--jaune-vif);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-logo {
+      width: 150px;
+      margin-bottom: 1.5rem;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: white;
+      margin: 0 0.5rem;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background-color: var(--jaune-vif);
+      color: var(--marron-fonce);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 1.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    .copyright a {
+      color: var(--jaune-pale);
+      text-decoration: none;
+    }
+
+    .copyright a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .hero-admissions {
+        padding: 6rem 0;
+      }
+      
+      .admission-step {
+        margin-bottom: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-nav {
+        padding-top: 1rem;
+      }
+      
+      .nav-link {
+        margin: 0.2rem 0;
+      }
+
+      .hero-admissions {
+        padding: 5rem 0;
+      }
+
+      .form-container {
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .timeline {
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        left: 15px;
+      }
+
+      .timeline-item::before {
+        left: 7px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="logo.png" alt="Logo" width="40"> UATM_GASA
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="facultes.html">Facultés</a></li>
+          <li class="nav-item"><a class="nav-link active" href="admissions.html">Admissions</a></li>
+          <li class="nav-item"><a class="nav-link" href="recherche.html">Recherche</a></li>
+          <li class="nav-item"><a class="nav-link" href="hebergement.html">Hébergement</a></li>
+          <li class="nav-item"><a class="nav-link" href="informations.html">Informations</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-admissions">
+    <div class="container">
+      <h1 class="display-3 fw-bold mb-4">Admissions</h1>
+      <p class="lead">Votre avenir commence ici - Découvrez comment nous rejoindre</p>
+    </div>
+  </section>
+
+  <!-- Processus d'admission -->
+  <section class="admission-process">
+    <div class="container">
+      <h2 class="section-title">Notre Processus d'Admission</h2>
+      <div class="row g-4">
+        <!-- Étape 1 -->
+        <div class="col-md-4 admission-step" data-animation="fadeIn">
+          <div class="step-number">1</div>
+          <h4 class="step-title"><i class="fas fa-search step-icon"></i> Exploration</h4>
+          <p>Découvrez nos programmes et choisissez celui qui correspond à vos aspirations.</p>
+          <ul class="list-unstyled mt-3">
+            <li>Visites virtuelles</li>
+            <li>Journées portes ouvertes</li>
+            <li>Rencontres avec les professeurs</li>
+          </ul>
+        </div>
+
+        <!-- Étape 2 -->
+        <div class="col-md-4 admission-step" data-animation="fadeIn">
+          <div class="step-number">2</div>
+          <h4 class="step-title"><i class="fas fa-file-alt step-icon"></i> Candidature</h4>
+          <p>Complétez votre dossier de candidature en ligne.</p>
+          <ul class="list-unstyled mt-3">
+            <li>Pièces justificatives</li>
+            <li>Lettre de motivation</li>
+            <li>Recommandations</li>
+          </ul>
+        </div>
+
+        <!-- Étape 3 -->
+        <div class="col-md-4 admission-step" data-animation="fadeIn">
+          <div class="step-number">3</div>
+          <h4 class="step-title"><i class="fas fa-graduation-cap step-icon"></i> Admission</h4>
+          <p>Recevez votre réponse et finalisez votre inscription.</p>
+          <ul class="list-unstyled mt-3">
+            <li>Entretien (si requis)</li>
+            <li>Paiement des frais</li>
+            <li>Inscription administrative</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calendrier -->
+  <section class="timeline-section">
+    <div class="container">
+      <h2 class="section-title">Calendrier des Admissions</h2>
+      <div class="timeline">
+        <!-- Échéance 1 -->
+        <div class="timeline-item">
+          <div class="timeline-date">1er Mars 2024</div>
+          <p>Ouverture des candidatures pour la rentrée d'automne</p>
+        </div>
+
+        <!-- Échéance 2 -->
+        <div class="timeline-item">
+          <div class="timeline-date">15 Avril 2024</div>
+          <p>Date limite pour les demandes de bourses</p>
+        </div>
+
+        <!-- Échéance 3 -->
+        <div class="timeline-item">
+          <div class="timeline-date">1er Juin 2024</div>
+          <p>Date limite de dépôt des dossiers complets</p>
+        </div>
+
+        <!-- Échéance 4 -->
+        <div class="timeline-item">
+          <div class="timeline-date">15 Juillet 2024</div>
+          <p>Notification des décisions d'admission</p>
+        </div>
+
+        <!-- Échéance 5 -->
+        <div class="timeline-item">
+          <div class="timeline-date">1er Septembre 2024</div>
+          <p>Rentrée universitaire</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulaire de contact -->
+  <section class="form-section">
+    <div class="container">
+      <div class="form-container">
+        <h2 class="form-title">Demande d'Information</h2>
+        <form id="admissionForm">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="firstName" class="form-label">Prénom</label>
+              <input type="text" class="form-control" id="firstName" required>
+            </div>
+            <div class="col-md-6">
+              <label for="lastName" class="form-label">Nom</label>
+              <input type="text" class="form-control" id="lastName" required>
+            </div>
+            <div class="col-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="col-12">
+              <label for="phone" class="form-label">Téléphone</label>
+              <input type="tel" class="form-control" id="phone">
+            </div>
+            <div class="col-12">
+              <label for="program" class="form-label">Programme d'intérêt</label>
+              <select class="form-select" id="program" required>
+                <option value="" selected disabled>Choisissez un programme</option>
+                <option value="sciences">Sciences & Technologies</option>
+                <option value="lettres">Lettres & Sciences Humaines</option>
+                <option value="economie">Économie & Gestion</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Vos questions ou commentaires..."></textarea>
+            </div>
+            <div class="col-12 text-center mt-4">
+              <button type="submit" class="btn btn-apply">
+                <i class="fas fa-paper-plane me-2"></i> Envoyer la demande
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">Questions Fréquentes</h2>
+      <div class="accordion" id="admissionFAQ">
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question1">
+              Quels sont les critères d'admission ?
+            </button>
+          </h3>
+          <div id="question1" class="accordion-collapse collapse" data-bs-parent="#admissionFAQ">
+            <div class="accordion-body">
+              <p>Les critères varient selon les programmes mais incluent généralement :</p>
+              <ul>
+                <li>Dossier académique (notes, diplômes)</li>
+                <li>Lettre de motivation personnalisée</li>
+                <li>Résultats aux tests requis (selon le programme)</li>
+                <li>Recommandations académiques</li>
+                <li>Pour certains programmes : portfolio ou entretien</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question2">
+              Puis-je postuler à plusieurs programmes ?
+            </button>
+          </h3>
+          <div id="question2" class="accordion-collapse collapse" data-bs-parent="#admissionFAQ">
+            <div class="accordion-body">
+              <p>Oui, vous pouvez postuler à jusqu'à 3 programmes maximum avec un seul dossier. Veuillez noter que :</p>
+              <ul>
+                <li>Chaque programme peut avoir des exigences spécifiques</li>
+                <li>Vous devrez peut-être fournir des documents supplémentaires</li>
+                <li>Les frais de candidature couvrent jusqu'à 3 programmes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#question3">
+              Quand recevrai-je une réponse à ma candidature ?
+            </button>
+          </h3>
+          <div id="question3" class="accordion-collapse collapse" data-bs-parent="#admissionFAQ">
+            <div class="accordion-body">
+              <p>Les délais de réponse varient selon les programmes :</p>
+              <ul>
+                <li><strong>Programmes réguliers :</strong> 4 à 6 semaines après la date limite</li>
+                <li><strong>Programmes compétitifs :</strong> Jusqu'à 8 semaines</li>
+                <li><strong>Admissions sur roulement :</strong> 3 à 4 semaines après soumission complète</li>
+              </ul>
+              <p class="mt-2">Vous recevrez une notification par email dès qu'une décision sera disponible.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <img src="logo.png" alt="Logo" class="footer-logo">
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          <p class="mb-2">123 Rue de l'Université, 75000 Paris</p>
+          <p class="mb-2">contact@institut.fr | +33 1 23 45 67 89</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+  <script>
+    // Animation GSAP
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        document.querySelector('.navbar').classList.add('scrolled');
+      } else {
+        document.querySelector('.navbar').classList.remove('scrolled');
+      }
+    });
+
+    // Animation des étapes
+    gsap.utils.toArray("[data-animation='fadeIn']").forEach((item, i) => {
+      gsap.from(item, {
+        scrollTrigger: {
+          trigger: item,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        y: 50,
+        opacity: 0,
+        duration: 0.8,
+        delay: i * 0.2
+      });
+    });
+
+    // Animation timeline
+    gsap.from(".timeline-item", {
+      scrollTrigger: {
+        trigger: ".timeline",
+        start: "top 70%",
+        toggleActions: "play none none none"
+      },
+      x: -50,
+      opacity: 0,
+      stagger: 0.2,
+      duration: 0.8
+    });
+
+    // Animation formulaire
+    gsap.from(".form-container", {
+      scrollTrigger: {
+        trigger: ".form-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8
+    });
+
+    // Animation FAQ
+    gsap.from(".accordion-item", {
+      scrollTrigger: {
+        trigger: ".faq-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 30,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.6
+    });
+
+    // Gestion du formulaire
+    document.getElementById('admissionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simulation d'envoi
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Envoi en cours...';
+      submitBtn.disabled = true;
+      
+      // Simulation délai
+      setTimeout(() => {
+        submitBtn.innerHTML = '<i class="fas fa-check me-2"></i>Envoyé !';
+        
+        setTimeout(() => {
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          this.reset();
+          
+          // Création et affichage de l'alerte
+          const alertDiv = document.createElement('div');
+          alertDiv.className = 'alert alert-success alert-dismissible fade show';
+          alertDiv.setAttribute('role', 'alert');
+          alertDiv.innerHTML = `
+            <strong>Merci !</strong> Votre demande a bien été envoyée. Nous vous contacterons sous 48h.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          `;
+          
+          const formTitle = document.querySelector('.form-title');
+          formTitle.parentNode.insertBefore(alertDiv, formTitle.nextSibling);
+          
+          // Fermeture automatique après 5s
+          setTimeout(() => {
+            const bsAlert = new bootstrap.Alert(alertDiv);
+            bsAlert.close();
+          }, 5000);
+        }, 1000);
+      }, 1500);
+    });
+  </script>
+</body>
+</html>  
