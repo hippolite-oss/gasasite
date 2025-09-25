@@ -14,177 +14,117 @@
       --jaune-pale: #FFF176;
       --blanc: #FFFFFF;
       --noir: #212121;
-      --transition: all 0.3s ease;
+      --transition: all 0.35s cubic-bezier(0.4, 0.6, 0.2, 1);
+      --shadow-sm: 0 2px 8px rgba(93, 64, 55, 0.1);
+      --shadow-md: 0 4px 16px rgba(93, 64, 55, 0.15);
+      --shadow-lg: 0 8px 24px rgba(93, 64, 55, 0.22);
     }
-
-    /* Reset et styles de base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
       color: var(--noir);
       overflow-x: hidden;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.7;
     }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    /* Navbar */
+    a { transition: var(--transition);}
+    img { max-width: 100%;}
+    /* -- Navbar -- */
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
       padding: 1rem 0;
-      transition: var(--transition);
     }
-
-    .navbar.scrolled {
-      padding: 0.5rem 0;
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-brand img {
-      margin-right: 10px;
-      transition: var(--transition);
-      height: 40px; /* Taille uniforme pour le logo */
-    }
-
-    .navbar-brand:hover img {
-      transform: rotate(5deg);
-    }
-
+    .navbar.scrolled { padding: 0.5rem 0; box-shadow: var(--shadow-md);}
+    .navbar-brand { font-weight: 700; display: flex; align-items: center; letter-spacing:1px;}
+    .navbar-brand img { margin-right: 10px; transition: var(--transition);}
+    .navbar-brand:hover img { animation: pulse 1s infinite;}
+    @keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.08);} 100%{transform:scale(1);} }
     .nav-link {
-      position: relative;
       margin: 0 0.5rem;
       padding: 0.5rem 1rem !important;
-      color: rgba(255, 255, 255, 0.9) !important;
+      color: rgba(255,255,255,0.9) !important;
       font-weight: 500;
+      border-radius: 4px;
+      background: transparent;
       transition: var(--transition);
+      position: relative;
     }
-
     .nav-link::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 50%; width: 0; height: 2px;
       background-color: var(--jaune-vif);
-      transition: var(--transition);
+      transform:translateX(-50%);
+      transition:var(--transition);
     }
-
+    .nav-link:focus,
     .nav-link:hover {
-      color: white !important;
-    }
-
-    .nav-link:hover::before {
-      width: 70%;
-    }
-
-    .nav-link.active {
       color: var(--jaune-vif) !important;
-      font-weight: 600;
+      background: rgba(93, 64, 55, 0.1);
     }
-
-    .nav-link.active::before {
-      width: 70%;
-    }
-
-    /* Hero Section */
+    .nav-link:hover::before, .nav-link.active::before { width: 70%; }
+    .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600; }
+    /* -- Hero Section -- */
     .hero-faculties {
       background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(141, 110, 99, 0.8)), 
-                  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
       color: white;
       padding: 8rem 0;
       text-align: center;
       position: relative;
+      overflow: hidden;
     }
-
     .hero-faculties::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to top, #f9f9f9, transparent);
+      bottom: 0; left: 0; width: 100%; height: 100px;
+      background: linear-gradient(to top,#f9f9f9,transparent);
     }
-
     .hero-faculties h1 {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.20);
     }
-
     .hero-faculties p {
-      font-size: clamp(1.2rem, 2vw, 1.5rem);
-      opacity: 0.9;
+      font-size: clamp(1.2rem,2vw,1.5rem);
+      opacity:0.92;
     }
-
-    /* Cards Facultés */
+    /* -- Facultés -- */
+    .main-section { padding: 5rem 0; }
     .faculty-card {
       border: none;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      box-shadow: var(--shadow-sm);
       transition: var(--transition);
       margin-bottom: 2rem;
-      opacity: 0;
-      animation: fadeIn 0.8s forwards;
       height: 100%;
     }
-
     .faculty-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 28px rgba(93, 64, 55, 0.2);
+      box-shadow: var(--shadow-lg);
     }
-
-    .faculty-card:nth-child(1) { animation-delay: 0.2s; }
-    .faculty-card:nth-child(2) { animation-delay: 0.4s; }
-    .faculty-card:nth-child(3) { animation-delay: 0.6s; }
-
     .card-header {
       background: linear-gradient(90deg, var(--marron-fonce), var(--marron-clair));
       color: white;
       font-weight: 600;
       padding: 1.2rem;
     }
-
     .card-img-top {
       height: 200px;
       object-fit: cover;
       transition: transform 0.5s ease;
     }
-
     .faculty-card:hover .card-img-top {
       transform: scale(1.05);
     }
-
     .card-body {
       padding: 1.5rem;
       background-color: var(--blanc);
     }
-
     .badge-faculty {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
@@ -195,17 +135,11 @@
       display: inline-block;
       margin-bottom: 1rem;
     }
-
-    .card-text {
-      margin-bottom: 1.5rem;
-    }
-
     .list-unstyled li {
       margin-bottom: 0.5rem;
       padding-left: 1.5rem;
       position: relative;
     }
-
     .list-unstyled li::before {
       content: '✓';
       position: absolute;
@@ -213,13 +147,8 @@
       color: var(--marron-clair);
       font-weight: bold;
     }
-
-    /* Vidéo Présentation */
-    .video-section {
-      padding: 5rem 0;
-      background-color: #f5f5f5;
-    }
-
+    /* -- Vidéo Présentation -- */
+    .video-section { padding: 5rem 0; background-color: #f5f5f5;}
     .video-section h2 {
       color: var(--marron-fonce);
       font-weight: 700;
@@ -227,7 +156,6 @@
       text-align: center;
       position: relative;
     }
-
     .video-section h2::after {
       content: '';
       position: absolute;
@@ -239,79 +167,59 @@
       background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
       border-radius: 2px;
     }
-
-    .video-container {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
-      transition: var(--transition);
-    }
-
-    .video-container:hover {
-      box-shadow: 0 12px 28px rgba(93, 64, 55, 0.2);
-    }
-
-    /* Footer */
+    .ratio { border-radius: 12px; box-shadow: var(--shadow-sm); transition: var(--transition);}
+    .ratio:hover { box-shadow: var(--shadow-lg);}
+    /* -- Footer -- */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
-      color: white;
-      padding: 4rem 0 2rem;
+      color: white; padding: 4rem 0 2rem;
       margin-top: 5rem;
     }
-
-    .footer-logo {
-      width: 150px;
-      margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1);
+    .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
+    .social-icons a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: white; margin: 0 0.5rem; transition: var(--transition);
+      text-decoration: none;
     }
-
+    .social-icons a:hover {
+      background-color: var(--jaune-vif);
+      color: var(--marron-fonce);
+      transform: translateY(-3px) scale(1.08);
+    }
     .copyright {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
-      margin-top: 3rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top: 1.5rem; margin-top: 3rem; text-align: center;
+      color: rgba(255,255,255,0.7); font-size: 0.95rem;
     }
-
-    /* Responsive */
+    .copyright a { color: var(--jaune-pale); text-decoration: none;}
+    .copyright a:hover { text-decoration: underline;}
+    /* -- Responsivité -- */
     @media (max-width: 992px) {
-      .hero-faculties {
-        padding: 6rem 0;
-      }
+      .hero-faculties { padding: 6rem 0;}
     }
-
-    @media (max-width: 768px) {
-      .navbar-nav {
-        padding-top: 1rem;
-      }
-      
-      .nav-link {
-        margin: 0.2rem 0;
-      }
-
-      .hero-faculties {
-        padding: 5rem 0;
-      }
+    @media (max-width:768px) {
+      .navbar-nav { padding-top: 1rem;}
+      .nav-link { margin: 0.2rem 0;}
+      .hero-faculties { padding: 5rem 0;}
+      .faculty-card .card-img-top { height: 150px;}
     }
-
-    @media (max-width: 576px) {
-      .card-img-top {
-        height: 150px;
-      }
+    @media (max-width:576px) {
+      .card-img-top { height: 120px;}
+      .footer-logo { width: 100px;}
     }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <!-- LOGO PRINCIPAL (40px de hauteur) -->
-        <img src="logo.png" alt="Logo Institut" width="40"> 
-        UATM_GASA
+      <a class="navbar-brand" href="../index.html">
+        <img src="logo.png" alt="Logo Institut" width="40" height="40"> UATM_GASA
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -326,7 +234,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Hero Section -->
   <section class="hero-faculties">
     <div class="container">
@@ -334,20 +241,17 @@
       <p class="lead">Découvrez nos pôles d'excellence académique</p>
     </div>
   </section>
-
   <!-- Facultés -->
-  <section class="py-5 main-section">
+  <section class="main-section">
     <div class="container">
       <div class="row g-4">
-        <!-- Faculté 1 - Sciences & Technologies -->
+        <!-- Faculté 1 -->
         <div class="col-md-4 faculty-card">
           <div class="card h-100">
             <div class="card-header">
               <h5 class="mb-0">Sciences & Technologies</h5>
             </div>
-            <img src="https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 class="card-img-top" 
-                 alt="Laboratoire de sciences modernes">
+            <img src="https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Laboratoire de sciences modernes">
             <div class="card-body">
               <span class="badge badge-faculty mb-3">Licence • Master • Doctorat</span>
               <p class="card-text">Formation en IA, robotique et biotechnologies avec des laboratoires de pointe.</p>
@@ -356,21 +260,17 @@
                 <li>90% d'insertion professionnelle</li>
                 <li>Partenariats avec Google, Tesla, SpaceX</li>
               </ul>
-              <!-- LOGO FACULTE SCIENCES -->
               <img src="logo.png" alt="Logo Sciences" class="mt-3" width="80">
             </div>
           </div>
         </div>
-
-        <!-- Faculté 2 - Lettres & Sciences Humaines -->
+        <!-- Faculté 2 -->
         <div class="col-md-4 faculty-card">
           <div class="card h-100">
             <div class="card-header">
               <h5 class="mb-0">Lettres & Sciences Humaines</h5>
             </div>
-            <img src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 class="card-img-top" 
-                 alt="Bibliothèque universitaire">
+            <img src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Bibliothèque universitaire">
             <div class="card-body">
               <span class="badge badge-faculty mb-3">Licence • Master</span>
               <p class="card-text">Programmes en histoire, philosophie et langues avec des partenariats internationaux.</p>
@@ -379,21 +279,17 @@
                 <li>Échanges avec 20 universités</li>
                 <li>Bibliothèque de 50 000 ouvrages</li>
               </ul>
-              <!-- LOGO FACULTE LETTRES -->
               <img src="logo.png" alt="Logo Lettres" class="mt-3" width="80">
             </div>
           </div>
         </div>
-
-        <!-- Faculté 3 - Économie & Gestion -->
+        <!-- Faculté 3 -->
         <div class="col-md-4 faculty-card">
           <div class="card h-100">
             <div class="card-header">
               <h5 class="mb-0">Économie & Gestion</h5>
             </div>
-            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-                 class="card-img-top" 
-                 alt="Réunion d'affaires moderne">
+            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Réunion d'affaires moderne">
             <div class="card-body">
               <span class="badge badge-faculty mb-3">Bachelor • MBA</span>
               <p class="card-text">Formation en gestion, finance et entrepreneuriat avec incubateur de startups.</p>
@@ -402,7 +298,6 @@
                 <li>150 entreprises partenaires</li>
                 <li>Programmes en alternance</li>
               </ul>
-              <!-- LOGO FACULTE ECONOMIE -->
               <img src="logo.png" alt="Logo Économie" class="mt-3" width="80">
             </div>
           </div>
@@ -410,7 +305,6 @@
       </div>
     </div>
   </section>
-
   <!-- Section Vidéo -->
   <section class="video-section">
     <div class="container">
@@ -419,11 +313,11 @@
         <div class="col-lg-8">
           <div class="ratio ratio-16x9 shadow-lg rounded">
             <iframe src="https://www.youtube.com/embed/ZwHL9taZi_k" 
-                    title="Vidéo de présentation de notre Institut" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen
-                    class="rounded"></iframe>
+              title="Vidéo de présentation de notre Institut" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              class="rounded"></iframe>
           </div>
           <div class="text-center mt-4">
             <a href="https://youtu.be/ZwHL9taZi_k" target="_blank" class="btn btn-primary btn-lg">
@@ -434,13 +328,11 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <!-- LOGO FOOTER (version blanche) -->
           <img src="logo.png" alt="Logo Institut" class="footer-logo">
           <div class="social-icons d-flex justify-content-center mt-3 mb-4">
             <a href="#" class="text-white mx-2"><i class="fab fa-facebook-f"></i></a>
@@ -458,7 +350,6 @@
       </div>
     </div>
   </footer>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -466,16 +357,10 @@
   <script>
     // Animation GSAP
     gsap.registerPlugin(ScrollTrigger);
-
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        document.querySelector('.navbar').classList.add('scrolled');
-      } else {
-        document.querySelector('.navbar').classList.remove('scrolled');
-      }
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
-
     // Animation des cartes
     gsap.utils.toArray(".faculty-card").forEach((card, i) => {
       gsap.from(card, {
@@ -490,7 +375,6 @@
         delay: i * 0.1
       });
     });
-
     // Animation du hero
     gsap.from(".hero-faculties h1", { 
       y: -50, 
@@ -503,7 +387,6 @@
       duration: 1, 
       delay: 0.3 
     });
-
     // Animation de la section vidéo
     gsap.from(".video-section h2", {
       scrollTrigger: {
@@ -515,7 +398,6 @@
       opacity: 0,
       duration: 0.8
     });
-
     gsap.from(".ratio", {
       scrollTrigger: {
         trigger: ".ratio",
