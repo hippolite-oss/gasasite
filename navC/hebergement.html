@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Hébergement - Institut</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -227,10 +228,13 @@
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white; padding: 4rem 0 2rem;
+      margin-top: 5rem;
     }
     .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .social-icons {
-      display: flex; align-items: center; margin-top: 1rem;
+      display: flex; align-items: center; margin-top: 1rem; justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
     .social-icons a {
       display: inline-flex; align-items: center; justify-content: center;
@@ -253,21 +257,44 @@
     .copyright a { color: var(--jaune-pale); text-decoration: none;}
     .copyright a:hover { text-decoration: underline;}
     /* -- Responsivité -- */
+    @media (max-width: 1200px) {
+      .main-section { padding: 3rem 0;}
+      .map-container { height: 350px;}
+    }
     @media (max-width: 992px) {
       .hero-title { font-size: 2.8rem;}
       .hero-subtitle { font-size: 1.2rem;}
-      .map-container { height: 350px;}
+      .main-section { padding: 2.5rem 0;}
+      .map-container { height: 300px;}
+      .footer-logo { width: 120px;}
     }
     @media (max-width:768px) {
-      .hero-section { padding: 6rem 0;}
-      .hero-title { font-size: 2.2rem;}
+      .hero-section { padding: 5rem 0;}
+      .hero-title { font-size: 2rem;}
+      .main-section { padding: 2rem 0;}
       .navbar-nav { padding-top: 1rem;}
       .nav-link { margin: 0.2rem 0;}
-      .map-container { height: 250px;}
+      .map-container { height: 200px;}
+      .accommodation-img { height: 140px;}
+      .footer-logo { width: 90px;}
+      .section-title { font-size: 1.4rem;}
+      .accommodation-body { padding: 1rem;}
+      .service-card { padding: 1.2rem;}
     }
     @media (max-width:576px) {
-      .footer-logo { width: 100px;}
-      .accommodation-img { height: 120px;}
+      .footer-logo { width: 70px;}
+      .accommodation-img { height: 100px;}
+      .main-section, .map-section { padding: 1.2rem 0;}
+      .section-title { font-size: 1.1rem;}
+      .hero-title { font-size: 1.3rem;}
+      .hero-content { padding: 0 0.5rem;}
+      .service-card { padding: 0.8rem;}
+      .copyright { font-size: 0.8rem;}
+      .social-icons a { width: 32px; height: 32px;}
+      .map-container { height: 120px;}
+      .accommodation-body { padding: 0.7rem;}
+      .accommodation-title { font-size: 1rem;}
+      .accommodation-price { font-size: 1rem;}
     }
   </style>
 </head>
@@ -455,7 +482,7 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 mb-4">
+        <div class="col-lg-4 mb-4 text-center text-lg-start">
           <img src="logo.png" alt="Logo" class="footer-logo">
           <p>L'Institut offre des formations d'excellence dans un environnement propice à l'apprentissage et à l'épanouissement personnel.</p>
           <div class="social-icons">
@@ -465,9 +492,9 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-6 mb-4 text-center text-lg-start">
           <h5>Navigation</h5>
-          <ul>
+          <ul class="p-0" style="list-style:none;">
             <li><a href="../index.html">Accueil</a></li>
             <li><a href="facultes.html">Facultés</a></li>
             <li><a href="admissions.html">Admissions</a></li>
@@ -476,15 +503,15 @@
             <li><a href="informations.html">Informations</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start">
           <h5>Contacts</h5>
-          <ul>
+          <ul class="p-0" style="list-style:none;">
             <li><i class="fas fa-map-marker-alt me-2"></i> 123 Rue de l'Université, 75000 Paris</li>
             <li><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</li>
             <li><i class="fas fa-envelope me-2"></i> contact@institut.fr</li>
           </ul>
         </div>
-        <div class="col-lg-3 mb-4">
+        <div class="col-lg-3 mb-4 text-center text-lg-start">
           <h5>Newsletter</h5>
           <p>Abonnez-vous pour recevoir nos dernières actualités</p>
           <div class="input-group mb-3">
