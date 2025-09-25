@@ -16,14 +16,7 @@
       --noir: #212121;
       --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
-
-    /* Reset et styles de base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0;}
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
@@ -34,123 +27,76 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    /* Animations */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
     }
-
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1);}
+      50% { transform: scale(1.05);}
+      100% { transform: scale(1);}
     }
-
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
+      0%,100% { transform: translateY(0);}
+      50% { transform: translateY(-5px);}
     }
-
     /* Navbar */
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       padding: 1rem 0;
       transition: var(--transition);
     }
-
-    .navbar.scrolled {
-      padding: 0.5rem 0;
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-brand img {
-      margin-right: 10px;
-      transition: var(--transition);
-    }
-
-    .navbar-brand:hover img {
-      transform: rotate(5deg);
-    }
-
+    .navbar.scrolled { padding: 0.5rem 0;}
+    .navbar-brand { font-weight: 700; display: flex; align-items: center;}
+    .navbar-brand img { margin-right: 10px; transition: var(--transition);}
+    .navbar-brand:hover img { transform: rotate(5deg);}
     .nav-link {
       position: relative;
       margin: 0 0.5rem;
       padding: 0.5rem 1rem !important;
-      color: rgba(255, 255, 255, 0.9) !important;
+      color: rgba(255,255,255,0.9) !important;
       font-weight: 500;
       transition: var(--transition);
     }
-
     .nav-link::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 0; height: 2px;
       background-color: var(--jaune-vif);
       transition: var(--transition);
     }
-
-    .nav-link:hover {
-      color: white !important;
-    }
-
-    .nav-link:hover::before {
-      width: 70%;
-    }
-
-    .nav-link.active {
-      color: var(--jaune-vif) !important;
-      font-weight: 600;
-    }
-
-    .nav-link.active::before {
-      width: 70%;
-    }
-
+    .nav-link:hover { color: white !important;}
+    .nav-link:hover::before { width: 70%;}
+    .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600;}
+    .nav-link.active::before { width: 70%;}
     /* Hero Section */
     .hero-info {
-      background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(141, 110, 99, 0.8)), 
-                  url('https://source.unsplash.com/random/1600x900?campus') center/cover no-repeat;
+      background: linear-gradient(rgba(93,64,55,0.8),rgba(141,110,99,0.8)), url('https://source.unsplash.com/random/1600x900?campus') center/cover no-repeat;
       color: white;
       padding: 8rem 0;
       text-align: center;
       position: relative;
       margin-bottom: 3rem;
     }
-
     .hero-info::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
+      bottom: 0; left: 0; width: 100%; height: 100px;
       background: linear-gradient(to top, #f9f9f9, transparent);
     }
-
     .hero-info h1 {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
-
     .hero-info p {
       font-size: clamp(1.2rem, 2vw, 1.5rem);
       opacity: 0.9;
       margin-bottom: 2rem;
     }
-
     .btn-hero {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
@@ -159,20 +105,15 @@
       font-weight: 600;
       border-radius: 50px;
       transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+      box-shadow: 0 4px 15px rgba(255,213,79,0.3);
       border: none;
     }
-
     .btn-hero:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 213, 79, 0.4);
+      box-shadow: 0 8px 20px rgba(255,213,79,0.4);
     }
-
     /* Cartes Informations */
-    .info-section {
-      padding: 5rem 0;
-    }
-
+    .info-section { padding: 5rem 0;}
     .section-title {
       position: relative;
       margin-bottom: 3rem;
@@ -180,43 +121,34 @@
       font-weight: 700;
       text-align: center;
     }
-
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
+      bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 4px;
       background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
       border-radius: 2px;
     }
-
     .info-card {
       border: none;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      box-shadow: 0 8px 24px rgba(93,64,55,0.1);
       transition: var(--transition);
       margin-bottom: 2rem;
       opacity: 0;
       height: 100%;
     }
-
     .info-card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 12px 28px rgba(93, 64, 55, 0.2);
+      box-shadow: 0 12px 28px rgba(93,64,55,0.2);
     }
-
-    .info-card:nth-child(1) { animation-delay: 0.2s; }
-    .info-card:nth-child(2) { animation-delay: 0.4s; }
-    .info-card:nth-child(3) { animation-delay: 0.6s; }
-
+    .info-card:nth-child(1) { animation-delay: 0.2s;}
+    .info-card:nth-child(2) { animation-delay: 0.4s;}
+    .info-card:nth-child(3) { animation-delay: 0.6s;}
     .info-badge {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 1rem; right: 1rem;
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
       padding: 0.5rem 1rem;
@@ -225,58 +157,45 @@
       font-size: 0.9rem;
       z-index: 1;
     }
-
     .info-icon {
       color: var(--marron-clair);
       font-size: 2.5rem;
       margin-bottom: 1rem;
       transition: var(--transition);
     }
-
     .info-card:hover .info-icon {
       color: var(--marron-fonce);
       animation: pulse 0.5s;
     }
-
-    /* Horaires */
     .schedule-day {
       border-left: 4px solid var(--jaune-vif);
       padding-left: 15px;
       margin-bottom: 15px;
     }
-
     /* Carte & Contact */
     .map-contact-section {
       padding: 5rem 0;
       background-color: #f5f5f5;
     }
-
     #info-map {
       height: 400px;
       border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      box-shadow: 0 8px 24px rgba(93,64,55,0.1);
     }
-
     .contact-item {
       margin-bottom: 20px;
       padding-left: 40px;
       position: relative;
     }
-
     .contact-icon {
       position: absolute;
-      left: 0;
-      top: 0;
+      left: 0; top: 0;
       color: var(--marron-clair);
       font-size: 1.5rem;
     }
-
     /* Services */
-    .services-section {
-      padding: 5rem 0;
-    }
-
+    .services-section { padding: 5rem 0;}
     .service-box {
       text-align: center;
       padding: 2rem;
@@ -284,56 +203,47 @@
       transition: var(--transition);
       margin-bottom: 1.5rem;
       background-color: white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
-
     .service-box:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 24px rgba(93, 64, 55, 0.1);
+      box-shadow: 0 8px 24px rgba(93,64,55,0.1);
     }
-
     .service-box i {
       font-size: 2.5rem;
       color: var(--marron-clair);
       margin-bottom: 1rem;
       transition: var(--transition);
     }
-
     .service-box:hover i {
       color: var(--marron-fonce);
       animation: float 2s ease-in-out infinite;
     }
-
     /* FAQ */
     .faq-section {
       padding: 5rem 0;
       background-color: #f5f5f5;
     }
-
     .accordion-item {
       border-radius: 8px !important;
       overflow: hidden;
       margin-bottom: 1rem;
       border: none;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
-
     .accordion-button {
       font-weight: 600;
       color: var(--marron-fonce);
       background-color: white;
     }
-
     .accordion-button:not(.collapsed) {
       color: var(--marron-fonce);
-      background-color: rgba(255, 213, 79, 0.1);
+      background-color: rgba(255,213,79,0.1);
     }
-
     .accordion-button:focus {
-      box-shadow: 0 0 0 0.25rem rgba(255, 213, 79, 0.25);
+      box-shadow: 0 0 0 0.25rem rgba(255,213,79,0.25);
       border-color: var(--jaune-vif);
     }
-
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
@@ -341,130 +251,107 @@
       padding: 4rem 0 2rem;
       margin-top: auto;
     }
-
-    .footer-logo {
-      width: 150px;
-      margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1);
-    }
-
+    .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .footer-links h5 {
       color: var(--jaune-vif);
       margin-bottom: 1.5rem;
       font-weight: 600;
     }
-
-    .footer-links ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
+    .footer-links ul { list-style: none; padding-left: 0;}
     .footer-links li {
       margin-bottom: 0.8rem;
       display: flex;
       align-items: center;
     }
-
-    .footer-links li i {
-      margin-right: 10px;
-      width: 20px;
-      text-align: center;
-    }
-
+    .footer-links li i { margin-right: 10px; width: 20px; text-align: center;}
     .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
       transition: var(--transition);
     }
-
     .footer-links a:hover {
       color: var(--jaune-vif);
       padding-left: 5px;
     }
-
     .social-icons {
       display: flex;
       margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
     }
-
     .social-icons a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       width: 40px;
       height: 40px;
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255,255,255,0.1);
       border-radius: 50%;
       color: white;
       margin-right: 10px;
       transition: var(--transition);
       text-decoration: none;
     }
-
     .social-icons a:hover {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
       transform: translateY(-3px);
     }
-
     .newsletter-input {
       border-radius: 50px 0 0 50px !important;
       border: none;
       padding: 0.8rem 1rem;
     }
-
     .newsletter-btn {
       border-radius: 0 50px 50px 0 !important;
       border: none;
     }
-
     .copyright {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-top: 1px solid rgba(255,255,255,0.1);
       padding-top: 1.5rem;
       margin-top: 3rem;
       text-align: center;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255,255,255,0.7);
       font-size: 0.9rem;
     }
-
-    .copyright a {
-      color: var(--jaune-pale);
-      text-decoration: none;
-    }
-
-    .copyright a:hover {
-      text-decoration: underline;
-    }
-
+    .copyright a { color: var(--jaune-pale); text-decoration: none;}
+    .copyright a:hover { text-decoration: underline;}
     /* Responsive */
+    @media (max-width: 1200px) {
+      .info-section, .services-section, .faq-section, .map-contact-section { padding: 3rem 0;}
+      .footer-logo { width: 120px;}
+    }
     @media (max-width: 992px) {
-      .hero-info {
-        padding: 6rem 0;
-      }
-      
-      .info-card {
-        margin-bottom: 1.5rem;
-      }
+      .hero-info { padding: 6rem 0;}
+      .info-card { margin-bottom: 1.5rem;}
+      #info-map { height: 300px;}
+      .footer-logo { width: 100px;}
     }
-
     @media (max-width: 768px) {
-      .navbar-nav {
-        padding-top: 1rem;
-      }
-      
-      .nav-link {
-        margin: 0.2rem 0;
-      }
-
-      .hero-info {
-        padding: 5rem 0;
-      }
+      .navbar-nav { padding-top: 1rem;}
+      .nav-link { margin: 0.2rem 0;}
+      .hero-info { padding: 4rem 0;}
+      .section-title { font-size: 1.3rem;}
+      .info-card { padding: 0.5rem;}
+      .service-box { padding: 1rem;}
+      .faq-section { padding: 2rem 0;}
+      .map-contact-section { padding: 2rem 0;}
+      .footer-logo { width: 80px;}
     }
-
     @media (max-width: 576px) {
-      #info-map {
-        height: 300px;
-      }
+      .hero-info { padding: 2rem 0;}
+      .hero-info h1 { font-size: 1.5rem;}
+      .hero-info p { font-size: 1rem;}
+      .section-title { font-size: 1.1rem;}
+      .info-section, .services-section, .faq-section, .map-contact-section { padding: 1rem 0;}
+      .info-card { margin-bottom: 1rem;}
+      .service-box { padding: 0.5rem;}
+      .faq-section { padding: 1rem 0;}
+      #info-map { height: 120px;}
+      .footer-logo { width: 60px;}
+      .copyright { font-size: 0.8rem;}
+      .social-icons a { width: 32px; height: 32px;}
     }
   </style>
 </head>
@@ -490,7 +377,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Hero Section -->
   <section class="hero-info">
     <div class="container">
@@ -499,7 +385,6 @@
       <a href="#contact" class="btn btn-hero">Nous contacter</a>
     </div>
   </section>
-
   <!-- Cartes Informations -->
   <section class="info-section">
     <div class="container">
@@ -521,7 +406,6 @@
             <p class="text-muted">Fermé les dimanches et jours fériés</p>
           </div>
         </div>
-
         <!-- Carte 2 -->
         <div class="col-md-4 info-card" data-animation="fadeIn">
           <div class="card h-100 text-center p-4">
@@ -531,7 +415,6 @@
             <a href="#map" class="btn btn-outline-primary">Voir sur la carte</a>
           </div>
         </div>
-
         <!-- Carte 3 -->
         <div class="col-md-4 info-card" data-animation="fadeIn">
           <div class="card h-100 text-center p-4">
@@ -548,7 +431,6 @@
       </div>
     </div>
   </section>
-
   <!-- Carte & Contact -->
   <section id="contact" class="map-contact-section">
     <div class="container">
@@ -591,62 +473,61 @@
       </div>
     </div>
   </section>
-
   <!-- Services -->
   <section class="services-section">
     <div class="container">
       <h2 class="section-title">Services aux Étudiants</h2>
       <div class="row g-4">
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-book"></i>
             <h5>Bibliothèque</h5>
             <p>100 000 ouvrages et ressources numériques accessibles 7j/7</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-utensils"></i>
             <h5>Restauration</h5>
             <p>Cafétéria et food trucks sur le campus avec menus variés</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-heartbeat"></i>
             <h5>Santé</h5>
             <p>Infirmerie et psychologue universitaire à votre disposition</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-briefcase"></i>
             <h5>Carrières</h5>
             <p>Service d'orientation professionnelle et aide à l'emploi</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-wifi"></i>
             <h5>Connectivité</h5>
             <p>WiFi haut débit sur tout le campus et salles informatiques</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-dumbbell"></i>
             <h5>Sports</h5>
             <p>Complexe sportif avec salle de musculation et terrains</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-theater-masks"></i>
             <h5>Culture</h5>
             <p>Clubs étudiants, théâtre et activités culturelles variées</p>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="service-box">
             <i class="fas fa-hand-holding-heart"></i>
             <h5>Solidarité</h5>
@@ -656,7 +537,6 @@
       </div>
     </div>
   </section>
-
   <!-- FAQ -->
   <section class="faq-section">
     <div class="container">
@@ -735,12 +615,11 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 mb-4">
+        <div class="col-lg-4 mb-4 text-center text-lg-start">
           <img src="logo.png" alt="Logo" class="footer-logo">
           <p class="mb-3">L'Institut offre des formations d'excellence dans un environnement propice à l'apprentissage et à l'épanouissement personnel.</p>
           <div class="social-icons">
@@ -750,9 +629,9 @@
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-md-6 mb-4">
+        <div class="col-lg-2 col-md-6 mb-4 text-center text-lg-start">
           <h5>Navigation</h5>
-          <ul>
+          <ul class="p-0" style="list-style:none;">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="facultes.html">Facultés</a></li>
             <li><a href="admissions.html">Admissions</a></li>
@@ -761,16 +640,16 @@
             <li><a href="informations.html">Informations</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start">
           <h5>Contacts</h5>
-          <ul>
+          <ul class="p-0" style="list-style:none;">
             <li><i class="fas fa-map-marker-alt"></i> 123 Rue de l'Université, 75000 Paris</li>
             <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
             <li><i class="fas fa-envelope"></i> contact@institut.fr</li>
             <li><i class="fas fa-clock"></i> Lun-Ven : 8h-19h | Sam : 9h-13h</li>
           </ul>
         </div>
-        <div class="col-lg-3 mb-4">
+        <div class="col-lg-3 mb-4 text-center text-lg-start">
           <h5>Newsletter</h5>
           <p>Abonnez-vous pour recevoir nos dernières actualités</p>
           <div class="input-group mb-3">
@@ -786,7 +665,6 @@
       </div>
     </div>
   </footer>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -798,10 +676,8 @@
       // Remplacer avec le code d'initialisation de Google Maps
       // Nécessite une clé API valide
     }
-
     // Animation GSAP
     gsap.registerPlugin(ScrollTrigger);
-
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
       if (window.scrollY > 50) {
@@ -810,7 +686,6 @@
         document.querySelector('.navbar').classList.remove('scrolled');
       }
     });
-
     // Animation des cartes
     gsap.utils.toArray("[data-animation='fadeIn']").forEach((card, i) => {
       gsap.from(card, {
@@ -825,7 +700,6 @@
         delay: i * 0.2
       });
     });
-
     // Animation des services
     gsap.utils.toArray(".service-box").forEach((box, i) => {
       gsap.from(box, {
@@ -840,7 +714,6 @@
         delay: i * 0.1
       });
     });
-
     // Animation FAQ
     gsap.utils.toArray(".accordion-item").forEach((item, i) => {
       gsap.from(item, {
@@ -855,7 +728,6 @@
         delay: i * 0.1
       });
     });
-
     // Animation du hero
     gsap.from(".hero-info h1", { 
       y: -50, 
@@ -874,7 +746,6 @@
       duration: 1, 
       delay: 0.6 
     });
-
     // Initialisation de la carte (simulée)
     document.addEventListener('DOMContentLoaded', initMap);
   </script>
