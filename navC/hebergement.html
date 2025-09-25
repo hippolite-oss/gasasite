@@ -13,146 +13,91 @@
       --jaune-pale: #FFF176;
       --blanc: #FFFFFF;
       --noir: #212121;
-      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      --transition: all 0.35s cubic-bezier(0.4, 0.6, 0.2, 1);
       --shadow-sm: 0 2px 8px rgba(93, 64, 55, 0.1);
       --shadow-md: 0 4px 16px rgba(93, 64, 55, 0.15);
-      --shadow-lg: 0 8px 24px rgba(93, 64, 55, 0.2);
+      --shadow-lg: 0 8px 24px rgba(93, 64, 55, 0.22);
     }
-
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f9f9f9;
       color: var(--noir);
       overflow-x: hidden;
+      font-size: 1rem;
+      line-height: 1.7;
     }
-
-    /* Navbar améliorée */
+    a { transition: var(--transition);}
+    img { max-width: 100%;}
+    /* -- Navbar -- */
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       padding: 1rem 0;
     }
-
-    .navbar.scrolled {
-      padding: 0.5rem 0;
-      box-shadow: var(--shadow-md);
-    }
-
-    .navbar-brand {
-      font-weight: 700;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-    }
-
-    .navbar-brand img {
-      margin-right: 10px;
-      transition: var(--transition);
-    }
-
-    .navbar-brand:hover img {
-      animation: pulse 1.5s infinite;
-    }
-
+    .navbar.scrolled { padding: 0.5rem 0; box-shadow: var(--shadow-md);}
+    .navbar-brand { font-weight: 700; display: flex; align-items: center; letter-spacing:1px;}
+    .navbar-brand img { margin-right: 10px; transition: var(--transition);}
+    .navbar-brand:hover img { animation: pulse 1s infinite;}
+    @keyframes pulse { 0%{transform:scale(1);} 50%{transform:scale(1.08);} 100%{transform:scale(1);} }
     .nav-link {
-      position: relative;
       margin: 0 0.5rem;
       padding: 0.5rem 1rem !important;
-      color: rgba(255, 255, 255, 0.9) !important;
+      color: rgba(255,255,255,0.9) !important;
       font-weight: 500;
-      transition: var(--transition);
       border-radius: 4px;
+      background: transparent;
+      transition: var(--transition);
+      position: relative;
     }
-
     .nav-link::before {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 2px;
+      bottom: 0; left: 50%; width: 0; height: 2px;
       background-color: var(--jaune-vif);
-      transition: var(--transition);
+      transform:translateX(-50%);
+      transition:var(--transition);
     }
-
+    .nav-link:focus,
     .nav-link:hover {
-      color: white !important;
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-link:hover::before {
-      width: 70%;
-    }
-
-    .nav-link.active {
       color: var(--jaune-vif) !important;
-      font-weight: 600;
+      background: rgba(93, 64, 55, 0.1);
     }
-
-    .nav-link.active::before {
-      width: 70%;
-    }
-
-    /* Hero Section */
+    .nav-link:hover::before, .nav-link.active::before { width: 70%; }
+    .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600; }
+    /* -- Hero Section -- */
     .hero-section {
       background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(141, 110, 99, 0.8)), 
-                  url('https://img.freepik.com/free-photo/student-dormitory-room_23-2148983693.jpg') center/cover no-repeat;
+        url('https://img.freepik.com/free-photo/student-dormitory-room_23-2148983693.jpg') center/cover no-repeat;
       color: white;
       padding: 8rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-
     .hero-section::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(to top, #f9f9f9, transparent);
+      bottom: 0; left: 0; width: 100%; height: 100px;
+      background: linear-gradient(to top,#f9f9f9,transparent);
     }
-
     .hero-content {
       max-width: 800px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
-
     .hero-title {
       font-size: 3.5rem;
       font-weight: 700;
       margin-bottom: 1.5rem;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.20);
     }
-
     .hero-subtitle {
       font-size: 1.5rem;
       margin-bottom: 2.5rem;
-      opacity: 0.9;
+      opacity:0.92;
     }
-
     .btn-hero {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
@@ -161,40 +106,27 @@
       font-weight: 600;
       border-radius: 50px;
       transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+      box-shadow: 0 4px 15px rgba(255,213,79,0.3);
     }
-
     .btn-hero:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(255, 213, 79, 0.4);
+      box-shadow: 0 8px 20px rgba(255,213,79,0.4);
       color: var(--marron-fonce);
     }
-
-    /* Section Principale */
-    .main-section {
-      padding: 5rem 0;
-      background-color: white;
-    }
-
+    /* -- Section Principale -- */
+    .main-section { padding: 5rem 0; background-color: white;}
     .section-title {
-      position: relative;
-      margin-bottom: 3rem;
-      color: var(--marron-fonce);
-      font-weight: 700;
+      position: relative; margin-bottom: 3rem;
+      color: var(--marron-fonce); font-weight: 700; text-align: center;
     }
-
     .section-title::after {
       content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 80px;
-      height: 4px;
+      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+      width: 80px; height: 4px;
       background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
       border-radius: 2px;
     }
-
-    /* Hébergement Section */
+    /* -- Hébergement Section -- */
     .accommodation-card {
       background-color: white;
       border-radius: 12px;
@@ -204,18 +136,15 @@
       margin-bottom: 2rem;
       height: 100%;
     }
-
     .accommodation-card:hover {
       transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
-
     .accommodation-img {
       height: 200px;
       object-fit: cover;
       width: 100%;
     }
-
     .accommodation-badge {
       position: absolute;
       top: 1rem;
@@ -227,66 +156,48 @@
       font-size: 0.8rem;
       font-weight: 600;
     }
-
-    .accommodation-body {
-      padding: 1.5rem;
-    }
-
+    .accommodation-body { padding: 1.5rem;}
     .accommodation-title {
       color: var(--marron-fonce);
       font-weight: 600;
       margin-bottom: 0.5rem;
     }
-
     .accommodation-location {
       color: var(--marron-clair);
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
     }
-
-    .accommodation-location i {
-      margin-right: 0.5rem;
-    }
-
+    .accommodation-location i { margin-right: 0.5rem;}
     .accommodation-features {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 1.5rem;
     }
-
     .feature-item {
       display: flex;
       align-items: center;
       font-size: 0.9rem;
     }
-
     .feature-item i {
       color: var(--marron-clair);
       margin-right: 0.3rem;
     }
-
     .accommodation-price {
       font-weight: 700;
       color: var(--marron-fonce);
       font-size: 1.2rem;
     }
-
-    /* Google Maps Section */
-    .map-section {
-      padding: 5rem 0;
-      background-color: #f5f5f5;
-    }
-
+    /* -- Google Maps Section -- */
+    .map-section { padding: 5rem 0; background-color: #f5f5f5;}
     .map-container {
       height: 500px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: var(--shadow-md);
     }
-
-    /* Services Section */
+    /* -- Services Section -- */
     .service-card {
       background-color: white;
       border-radius: 12px;
@@ -298,133 +209,76 @@
       border-left: 4px solid var(--jaune-vif);
       text-align: center;
     }
-
     .service-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-md);
     }
-
     .service-icon {
       font-size: 2.5rem;
       color: var(--marron-clair);
       margin-bottom: 1.5rem;
       transition: var(--transition);
     }
-
     .service-card:hover .service-icon {
       color: var(--marron-fonce);
       animation: float 2s ease-in-out infinite;
     }
-
-    /* Footer */
+    /* -- Footer -- */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
-      color: white;
-      padding: 4rem 0 2rem;
+      color: white; padding: 4rem 0 2rem;
     }
-
-    .footer-logo {
-      width: 150px;
-      margin-bottom: 1.5rem;
-      filter: brightness(0) invert(1);
+    .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
+    .social-icons {
+      display: flex; align-items: center; margin-top: 1rem;
     }
-
-    .footer-links h5 {
-      color: var(--jaune-vif);
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
-
-    .footer-links ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-      color: var(--jaune-vif);
-      padding-left: 5px;
-    }
-
     .social-icons a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255, 255, 255, 0.1);
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      background-color: rgba(255,255,255,0.1);
       border-radius: 50%;
-      color: white;
-      margin-right: 10px;
-      transition: var(--transition);
+      color: white; margin-right: 10px; transition: var(--transition);
+      text-decoration: none;
     }
-
     .social-icons a:hover {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
-      transform: translateY(-3px);
+      transform: translateY(-3px) scale(1.08);
     }
-
     .copyright {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 1.5rem;
-      margin-top: 3rem;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      padding-top: 1.5rem; margin-top: 3rem; text-align: center;
+      color: rgba(255,255,255,0.7); font-size: 0.95rem;
     }
-
-    /* Responsive */
+    .copyright a { color: var(--jaune-pale); text-decoration: none;}
+    .copyright a:hover { text-decoration: underline;}
+    /* -- Responsivité -- */
     @media (max-width: 992px) {
-      .hero-title {
-        font-size: 2.8rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
+      .hero-title { font-size: 2.8rem;}
+      .hero-subtitle { font-size: 1.2rem;}
+      .map-container { height: 350px;}
     }
-
-    @media (max-width: 768px) {
-      .hero-section {
-        padding: 6rem 0;
-      }
-      
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      
-      .navbar-nav {
-        padding-top: 1rem;
-      }
-      
-      .nav-link {
-        margin: 0.2rem 0;
-      }
-      
-      .map-container {
-        height: 350px;
-      }
+    @media (max-width:768px) {
+      .hero-section { padding: 6rem 0;}
+      .hero-title { font-size: 2.2rem;}
+      .navbar-nav { padding-top: 1rem;}
+      .nav-link { margin: 0.2rem 0;}
+      .map-container { height: 250px;}
+    }
+    @media (max-width:576px) {
+      .footer-logo { width: 100px;}
+      .accommodation-img { height: 120px;}
     }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="logo.png" alt="Logo" width="40"> UATM_GASA
+      <a class="navbar-brand" href="../index.html">
+        <img src="logo.png" alt="Logo" width="40" height="40"> UATM_GASA
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -439,7 +293,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Hero Section -->
   <section class="hero-section">
     <div class="container">
@@ -450,13 +303,11 @@
       </div>
     </div>
   </section>
-
   <!-- Accommodations Section -->
   <section id="accommodations" class="main-section">
     <div class="container">
-      <h2 class="text-center section-title">Nos Résidences Étudiantes</h2>
+      <h2 class="section-title">Nos Résidences Étudiantes</h2>
       <p class="text-center mb-5">Nous proposons différents types d'hébergement adaptés à tous les besoins et budgets</p>
-      
       <div class="row">
         <!-- Résidence 1 -->
         <div class="col-lg-4 col-md-6 mb-4">
@@ -469,14 +320,12 @@
               <h3 class="accommodation-title">Résidence Campus</h3>
               <p class="accommodation-location"><i class="fas fa-map-marker-alt"></i> Cotonou, Gbegamey</p>
               <p>Chambres individuelles avec espaces communs partagés. Idéal pour les étudiants cherchant une vie sociale active.</p>
-              
               <div class="accommodation-features">
                 <span class="feature-item"><i class="fas fa-wifi"></i> WiFi</span>
                 <span class="feature-item"><i class="fas fa-utensils"></i> Restauration</span>
                 <span class="feature-item"><i class="fas fa-dumbbell"></i> Salle de sport</span>
                 <span class="feature-item"><i class="fas fa-book"></i> Bibliothèque</span>
               </div>
-              
               <div class="d-flex justify-content-between align-items-center">
                 <span class="accommodation-price">75,000 FCFA/mois</span>
                 <a href="#" class="btn btn-sm btn-outline-primary">Détails</a>
@@ -484,7 +333,6 @@
             </div>
           </div>
         </div>
-        
         <!-- Résidence 2 -->
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="accommodation-card">
@@ -496,14 +344,12 @@
               <h3 class="accommodation-title">Appartements Étudiants</h3>
               <p class="accommodation-location"><i class="fas fa-map-marker-alt"></i> Cotonou, Gbegamey</p>
               <p>Appartements entièrement équipés pour 2 à 4 étudiants. Plus d'intimité avec des espaces partagés réduits.</p>
-              
               <div class="accommodation-features">
                 <span class="feature-item"><i class="fas fa-wifi"></i> WiFi</span>
                 <span class="feature-item"><i class="fas fa-utensils"></i> Cuisine</span>
                 <span class="feature-item"><i class="fas fa-tv"></i> TV</span>
                 <span class="feature-item"><i class="fas fa-parking"></i> Parking</span>
               </div>
-              
               <div class="d-flex justify-content-between align-items-center">
                 <span class="accommodation-price">120,000 FCFA/mois</span>
                 <a href="#" class="btn btn-sm btn-outline-primary">Détails</a>
@@ -511,7 +357,6 @@
             </div>
           </div>
         </div>
-        
         <!-- Résidence 3 -->
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="accommodation-card">
@@ -523,14 +368,12 @@
               <h3 class="accommodation-title">Résidence Confort</h3>
               <p class="accommodation-location"><i class="fas fa-map-marker-alt"></i> Cotonou, Gbegamey</p>
               <p>Chambres spacieuses avec salle de bain privative. Option haut de gamme pour un confort optimal.</p>
-              
               <div class="accommodation-features">
                 <span class="feature-item"><i class="fas fa-wifi"></i> WiFi</span>
                 <span class="feature-item"><i class="fas fa-utensils"></i> Restauration</span>
                 <span class="feature-item"><i class="fas fa-swimming-pool"></i> Piscine</span>
                 <span class="feature-item"><i class="fas fa-concierge-bell"></i> Service ménage</span>
               </div>
-              
               <div class="d-flex justify-content-between align-items-center">
                 <span class="accommodation-price">180,000 FCFA/mois</span>
                 <a href="#" class="btn btn-sm btn-outline-primary">Détails</a>
@@ -539,19 +382,16 @@
           </div>
         </div>
       </div>
-      
       <div class="text-center mt-4">
         <a href="#" class="btn btn-primary">Voir toutes les options d'hébergement</a>
       </div>
     </div>
   </section>
-
   <!-- Services Section -->
   <section class="main-section bg-light">
     <div class="container">
-      <h2 class="text-center section-title">Nos Services</h2>
+      <h2 class="section-title">Nos Services</h2>
       <p class="text-center mb-5">Nous mettons tout en œuvre pour rendre votre séjour agréable et productif</p>
-      
       <div class="row">
         <div class="col-md-4 mb-4">
           <div class="service-card">
@@ -562,7 +402,6 @@
             <p>Nos résidences sont surveillées 24 heures sur 24 avec des gardes et un système de contrôle d'accès.</p>
           </div>
         </div>
-        
         <div class="col-md-4 mb-4">
           <div class="service-card">
             <div class="service-icon">
@@ -572,7 +411,6 @@
             <p>Service de navette gratuit entre les résidences et le campus principal aux heures de cours.</p>
           </div>
         </div>
-        
         <div class="col-md-4 mb-4">
           <div class="service-card">
             <div class="service-icon">
@@ -585,23 +423,15 @@
       </div>
     </div>
   </section>
-
   <!-- Map Section -->
   <section class="map-section">
     <div class="container">
-      <h2 class="text-center section-title">Localisation</h2>
+      <h2 class="section-title">Localisation</h2>
       <p class="text-center mb-5">Nos résidences sont stratégiquement situées à proximité du campus principal</p>
-      
       <div class="map-container">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.123456789012!2d2.3456789!3d6.1234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMDcnMjQuNSJOIDLCsDIwJzQ0LjQiRQ!5e0!3m2!1sfr!2sbj!4v1234567890123!5m2!1sfr!2sbj" 
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"></iframe>
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      
       <div class="row mt-5">
         <div class="col-md-4 mb-4">
           <div class="feature-item p-3 bg-white rounded shadow-sm">
@@ -621,7 +451,6 @@
       </div>
     </div>
   </section>
-
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -629,7 +458,7 @@
         <div class="col-lg-4 mb-4">
           <img src="logo.png" alt="Logo" class="footer-logo">
           <p>L'Institut offre des formations d'excellence dans un environnement propice à l'apprentissage et à l'épanouissement personnel.</p>
-          <div class="social-icons mt-3">
+          <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -639,11 +468,12 @@
         <div class="col-lg-2 col-md-6 mb-4">
           <h5>Navigation</h5>
           <ul>
-            <li><a href="index.html">Accueil</a></li>
+            <li><a href="../index.html">Accueil</a></li>
             <li><a href="facultes.html">Facultés</a></li>
             <li><a href="admissions.html">Admissions</a></li>
             <li><a href="recherche.html">Recherche</a></li>
             <li><a href="hebergement.html">Hébergement</a></li>
+            <li><a href="informations.html">Informations</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4">
@@ -668,24 +498,17 @@
       </div>
     </div>
   </footer>
-
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script>
-    // Animation GSAP pour les éléments
+    // Animation GSAP
     gsap.registerPlugin(ScrollTrigger);
-    
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        document.querySelector('.navbar').classList.add('scrolled');
-      } else {
-        document.querySelector('.navbar').classList.remove('scrolled');
-      }
+      document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
-
     // Hero section animation
     gsap.from(".hero-title", { 
       opacity: 0, 
@@ -693,21 +516,18 @@
       duration: 1, 
       delay: 0.3 
     });
-    
     gsap.from(".hero-subtitle", { 
       opacity: 0, 
       y: 50, 
       duration: 1, 
       delay: 0.6 
     });
-    
     gsap.from(".btn-hero", { 
       opacity: 0, 
       scale: 0.8, 
       duration: 1, 
       delay: 0.9 
     });
-
     // Accommodation cards animation
     gsap.utils.toArray(".accommodation-card").forEach((card, i) => {
       gsap.from(card, {
@@ -722,7 +542,6 @@
         delay: i * 0.1
       });
     });
-
     // Services animation
     gsap.utils.toArray(".service-card").forEach((card, i) => {
       gsap.from(card, {
@@ -737,7 +556,6 @@
         delay: i * 0.1
       });
     });
-
     // Map animation
     gsap.from(".map-container", {
       scrollTrigger: {
@@ -749,7 +567,6 @@
       scale: 0.9,
       duration: 1
     });
-
     // Footer animation
     gsap.from("footer", {
       scrollTrigger: {
