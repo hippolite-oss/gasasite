@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Accueil - Institut</title>
+  <title>Accueil - Institut UATM_GASA</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Institut UATM_GASA : découvrez l'excellence académique, la recherche innovante, l'ouverture internationale et les dernières actualités.">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -29,7 +30,6 @@
     }
     a { transition: var(--transition);}
     img { max-width: 100%;}
-    /* -- Navbar -- */
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
       box-shadow: var(--shadow-sm);
@@ -66,7 +66,6 @@
     }
     .nav-link:hover::before, .nav-link.active::before { width: 70%; }
     .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600; }
-    /* -- Boutons dynamiques -- */
     .btn,
     .btn-hero,
     .btn-primary,
@@ -121,7 +120,6 @@
       font-size: 1.1rem;
       box-shadow: 0 6px 16px rgba(255, 213, 79, 0.15);
     }
-    /* -- Hero Section -- */
     .hero-section {
       background: linear-gradient(rgba(93,64,55,0.80), rgba(141,110,99,0.80)), 
         url('https://img.freepik.com/free-photo/group-diverse-students-studying-together_53876-14836.jpg') center/cover no-repeat;
@@ -140,7 +138,6 @@
     .hero-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 1;}
     .hero-title { font-size: 3.5rem; font-weight: 700; margin-bottom: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.20);}
     .hero-subtitle { font-size: 1.5rem; margin-bottom: 2.5rem; opacity: 0.94;}
-    /* -- Section Principale -- */
     .main-section { padding: 5rem 0; background: #FFF;}
     .section-title {
       position: relative; margin-bottom: 3rem;
@@ -182,7 +179,6 @@
       font-weight: 600;
       margin-bottom: 1rem;
     }
-    /* -- News Section -- */
     .news-section { padding: 5rem 0; background-color: #f5f5f5;}
     .news-card {
       background-color: white;
@@ -203,7 +199,6 @@
     }
     .news-title { color: var(--marron-fonce); font-weight: 600; transition: var(--transition);}
     .news-card:hover .news-title { color: var(--marron-clair);}
-    /* -- Footer -- */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white; padding: 4rem 0 2rem;
@@ -214,12 +209,25 @@
     .footer-links li {margin-bottom: 0.8rem;}
     .footer-links a { color: rgba(255,255,255,0.8); text-decoration: none; transition: var(--transition);}
     .footer-links a:hover { color: var(--jaune-vif); padding-left: 5px;}
+    .social-icons {
+      display: flex;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
     .social-icons a {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
       background-color: rgba(255,255,255,0.1);
       border-radius: 50%;
-      color: white; margin-right: 10px; transition: var(--transition);
+      color: white;
+      margin-right: 10px;
+      transition: var(--transition);
+      text-decoration: none;
     }
     .social-icons a:hover {
       background-color: var(--jaune-vif);
@@ -235,10 +243,10 @@
       box-shadow: 0 0 0 0.2rem rgba(93, 64, 55, 0.18);
       border-color: var(--marron-fonce);
     }
-    /* -- Responsivité -- */
     @media (max-width: 992px) {
       .hero-title { font-size: 2.8rem;}
       .hero-subtitle { font-size: 1.2rem;}
+      .footer-logo { width: 120px;}
     }
     @media (max-width:768px) {
       .hero-section { padding: 6rem 0;}
@@ -246,11 +254,14 @@
       .navbar-nav { padding-top: 1rem;}
       .nav-link { margin: 0.2rem 0;}
       .section-title::after { left: 50%; transform: translateX(-50%);}
+      .footer-logo { width: 80px;}
     }
     @media (max-width:576px) {
       .navbar-brand img { width:32px; }
       .hero-title { font-size: 1.5rem;}
-      .footer-logo { width: 100px;}
+      .footer-logo { width: 60px;}
+      .copyright { font-size: 0.8rem;}
+      .social-icons a { width: 32px; height: 32px;}
     }
   </style>
 </head>
@@ -375,19 +386,19 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-lg-4 mb-4">
-          <img src="navC/logo.png" alt="Logo" class="footer-logo">
-          <p>L'Institut offre des formations d'excellence dans un environnement propice à l'apprentissage et à l'épanouissement personnel.</p>
-          <div class="social-icons mt-3">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="col-lg-4 mb-4 text-center text-lg-start">
+          <img src="navC/logo.png" alt="Logo UATM_GASA" class="footer-logo">
+          <p class="mb-3">L'Institut offre des formations d'excellence dans un environnement propice à l'apprentissage et à l'épanouissement personnel.</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
-        <div class="col-lg-2 col-md-6 mb-4 footer-links">
+        <div class="col-lg-2 col-md-6 mb-4 text-center text-lg-start footer-links">
           <h5>Navigation</h5>
-          <ul>
+          <ul class="p-0">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="navC/facultes.html">Facultés</a></li>
             <li><a href="navC/admissions.html">Admissions</a></li>
@@ -396,25 +407,27 @@
             <li><a href="navC/informations.html">Informations</a></li>
           </ul>
         </div>
-        <div class="col-lg-3 col-md-6 mb-4 footer-links">
+        <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
           <h5>Contacts</h5>
-          <ul>
-            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Rue de l'Université, 75000 Paris</li>
-            <li><i class="fas fa-phone me-2"></i> +33 1 23 45 67 89</li>
-            <li><i class="fas fa-envelope me-2"></i> contact@institut.fr</li>
+          <ul class="p-0">
+            <li><i class="fas fa-map-marker-alt"></i> 123 Rue de l'Université, 75000 Paris</li>
+            <li><i class="fas fa-phone"></i> +33 1 23 45 67 89</li>
+            <li><i class="fas fa-envelope"></i> contact@institut.fr</li>
           </ul>
         </div>
-        <div class="col-lg-3 mb-4">
+        <div class="col-lg-3 mb-4 text-center text-lg-start">
           <h5>Newsletter</h5>
           <p>Abonnez-vous pour recevoir nos dernières actualités</p>
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Votre email">
-            <button class="btn btn-warning" type="button">S'abonner</button>
+            <input type="email" class="form-control newsletter-input" placeholder="Votre email">
+            <button class="btn btn-warning newsletter-btn" type="button">
+              <i class="fas fa-paper-plane"></i>
+            </button>
           </div>
         </div>
       </div>
       <div class="copyright">
-        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#" class="text-white">Mentions légales</a> | <a href="#" class="text-white">Politique de confidentialité</a></p>
+        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
       </div>
     </div>
   </footer>
@@ -423,13 +436,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script>
-    // Animation GSAP pour les éléments
     gsap.registerPlugin(ScrollTrigger);
-    // Navbar scroll effect
     window.addEventListener('scroll', function() {
       document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
-    // Hero section animation
     gsap.from(".hero-title", { 
       opacity: 0, 
       y: -50, 
@@ -448,7 +458,6 @@
       duration: 1, 
       delay: 0.9 
     });
-    // Features animation
     gsap.utils.toArray(".feature-card").forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
@@ -462,7 +471,6 @@
         delay: i * 0.1
       });
     });
-    // News animation
     gsap.utils.toArray(".news-card").forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
@@ -476,7 +484,6 @@
         delay: i * 0.1
       });
     });
-    // Footer animation
     gsap.from("footer", {
       scrollTrigger: {
         trigger: "footer",
