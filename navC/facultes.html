@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Facultés - Institut</title>
+  <title>Facultés - Institut UATM-GASA</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -144,6 +144,24 @@
       color: var(--marron-clair);
       font-weight: bold;
     }
+    .filiere-list {
+      margin-top: 1rem;
+      padding-left: 0;
+    }
+    .filiere-list li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--marron-fonce);
+    }
+    .filiere-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--jaune-vif);
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
     .video-section { padding: 5rem 0; background-color: #f5f5f5;}
     .video-section h2 {
       color: var(--marron-fonce);
@@ -283,67 +301,98 @@
   <section class="hero-faculties">
     <div class="container">
       <h1 class="display-3 fw-bold mb-4">Nos Facultés</h1>
-      <p class="lead">Découvrez nos pôles d'excellence académique</p>
+      <p class="lead">Découvrez nos pôles d'excellence académique et nos formations innovantes</p>
     </div>
   </section>
   <!-- Facultés -->
   <section class="main-section">
     <div class="container">
       <div class="row g-4">
-        <!-- Faculté 1 -->
-        <div class="col-md-4 faculty-card">
+        <!-- UFR Sciences et Techniques -->
+        <div class="col-md-6 faculty-card">
           <div class="card h-100">
             <div class="card-header">
-              <h5 class="mb-0">Sciences & Technologies</h5>
+              <h5 class="mb-0">UFR Sciences et Techniques</h5>
             </div>
             <img src="https://images.pexels.com/photos/414860/pexels-photo-414860.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Laboratoire de sciences modernes">
             <div class="card-body">
-              <span class="badge badge-faculty mb-3">Licence • Master • Doctorat</span>
-              <p class="card-text">Formation en IA, robotique et biotechnologies avec des laboratoires de pointe.</p>
-              <ul class="list-unstyled">
-                <li>12 laboratoires équipés</li>
-                <li>90% d'insertion professionnelle</li>
-                <li>Partenariats avec Google, Tesla, SpaceX</li>
+              <span class="badge badge-faculty mb-3">Licence • Master</span>
+              <p class="card-text">Formations d'excellence en sciences et technologies avec des laboratoires de pointe et une approche pratique.</p>
+              <h6 class="mt-3 mb-2 fw-bold">Filières proposées :</h6>
+              <ul class="filiere-list">
+                <li>Réseaux Informatique et Télécom</li>
+                <li>Système Industriel</li>
+                <li>Biotechnologie</li>
+                <li>Système Informatique et Logiciel</li>
+                <li>Génie Électrique et Énergie Renouvelable</li>
+                <li>Froid et Climatisation</li>
+                <li>Informatique Industrielle & Maintenance</li>
+                <li>Sécurité Informatique</li>
               </ul>
-              <img src="logo.png" alt="Logo Sciences" class="mt-3" width="80">
+              <img src="logo.png" alt="Logo Sciences et Techniques" class="mt-3" width="80">
             </div>
           </div>
         </div>
-        <!-- Faculté 2 -->
-        <div class="col-md-4 faculty-card">
+        <!-- UFR Sciences Agronomiques -->
+        <div class="col-md-6 faculty-card">
           <div class="card h-100">
             <div class="card-header">
-              <h5 class="mb-0">Lettres & Sciences Humaines</h5>
+              <h5 class="mb-0">UFR Sciences Agronomiques</h5>
             </div>
-            <img src="https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Bibliothèque universitaire">
+            <img src="https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Agriculture moderne">
             <div class="card-body">
               <span class="badge badge-faculty mb-3">Licence • Master</span>
-              <p class="card-text">Programmes en histoire, philosophie et langues avec des partenariats internationaux.</p>
-              <ul class="list-unstyled">
-                <li>8 départements spécialisés</li>
-                <li>Échanges avec 20 universités</li>
-                <li>Bibliothèque de 50 000 ouvrages</li>
+              <p class="card-text">Formations complètes en agronomie avec une approche durable et innovante pour répondre aux défis alimentaires.</p>
+              <h6 class="mt-3 mb-2 fw-bold">Filières proposées :</h6>
+              <ul class="filiere-list">
+                <li>Production Animale</li>
+                <li>Production Végétale</li>
+                <li>Agro-économie</li>
               </ul>
-              <img src="logo.png" alt="Logo Lettres" class="mt-3" width="80">
+              <img src="logo.png" alt="Logo Sciences Agronomiques" class="mt-3" width="80">
             </div>
           </div>
         </div>
-        <!-- Faculté 3 -->
-        <div class="col-md-4 faculty-card">
+        <!-- UFR Sciences de Gestion -->
+        <div class="col-md-6 faculty-card">
           <div class="card h-100">
             <div class="card-header">
-              <h5 class="mb-0">Économie & Gestion</h5>
+              <h5 class="mb-0">UFR Sciences de Gestion</h5>
             </div>
             <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Réunion d'affaires moderne">
             <div class="card-body">
-              <span class="badge badge-faculty mb-3">Bachelor • MBA</span>
-              <p class="card-text">Formation en gestion, finance et entrepreneuriat avec incubateur de startups.</p>
-              <ul class="list-unstyled">
-                <li>Accréditation AACSB & AMBA</li>
-                <li>150 entreprises partenaires</li>
-                <li>Programmes en alternance</li>
+              <span class="badge badge-faculty mb-3">Licence • Master</span>
+              <p class="card-text">Formation en gestion, finance et entrepreneuriat avec incubateur de startups et partenariats avec les entreprises.</p>
+              <h6 class="mt-3 mb-2 fw-bold">Filières proposées :</h6>
+              <ul class="filiere-list">
+                <li>Marketing, Communication et Commerce</li>
+                <li>Finance, Comptabilité et Audit</li>
+                <li>Banque, Finance et Assurance</li>
+                <li>Management des Ressources Humaines</li>
+                <li>Transport et Logistique</li>
+                <li>Entreprenariat et Gestion des Projets</li>
+                <li>Marketing Digital</li>
               </ul>
-              <img src="logo.png" alt="Logo Économie" class="mt-3" width="80">
+              <img src="logo.png" alt="Logo Sciences de Gestion" class="mt-3" width="80">
+            </div>
+          </div>
+        </div>
+        <!-- UFR Sciences Juridiques et Politiques -->
+        <div class="col-md-6 faculty-card">
+          <div class="card h-100">
+            <div class="card-header">
+              <h5 class="mb-0">UFR Sciences Juridiques et Politiques</h5>
+            </div>
+            <img src="https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="card-img-top" alt="Sciences juridiques et politiques">
+            <div class="card-body">
+              <span class="badge badge-faculty mb-3">Licence • Master</span>
+              <p class="card-text">Formations en droit, relations internationales et sciences politiques avec une approche pluridisciplinaire.</p>
+              <h6 class="mt-3 mb-2 fw-bold">Filières proposées :</h6>
+              <ul class="filiere-list">
+                <li>Sciences Juridiques</li>
+                <li>Communication et Relations Internationales</li>
+              </ul>
+              <img src="logo.png" alt="Logo Sciences Juridiques et Politiques" class="mt-3" width="80">
             </div>
           </div>
         </div>
@@ -357,7 +406,7 @@
       <div class="row justify-content-center mt-5">
         <div class="col-lg-8">
           <div class="ratio ratio-16x9 shadow-lg rounded">
-            <iframe src="https://www.youtube.com/embed/ZwHL9taZi_k" 
+            <iframe src="https://www.youtube.com/embed/0gDR-EM1iU0" 
               title="Vidéo de présentation de notre Institut" 
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -365,7 +414,7 @@
               class="rounded"></iframe>
           </div>
           <div class="text-center mt-4">
-            <a href="https://youtu.be/ZwHL9taZi_k" target="_blank" class="btn btn-primary btn-lg">
+            <a href="https://www.youtube.com/watch?v=0gDR-EM1iU0" target="_blank" class="btn btn-primary btn-lg">
               <i class="fab fa-youtube me-2"></i> Voir sur YouTube
             </a>
           </div>
@@ -401,8 +450,8 @@
         <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
           <h5>Contacts</h5>
           <ul class="p-0">
-            <li><i class="fas fa-map-marker-alt"></i>2ème rue à gauche apres le CEG Gbégamey</li>
-            <li><i class="fas fa-phone"></i>+229 01 65 78 77 21/li</li>
+            <li><i class="fas fa-map-marker-alt"></i>2ème rue à gauche après le CEG Gbégamey</li>
+            <li><i class="fas fa-phone"></i>+229 01 65 78 77 21</li>
             <li><i class="fas fa-envelope"></i> info@uatm-gasa.com</li>
             <li><i class="fas fa-clock"></i> Lun-Ven : 8h-19h | Sam : 9h-13h</li>
           </ul>
@@ -419,7 +468,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+        <p class="mb-0">© 2023 Institut UATM-GASA - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
       </div>
     </div>
   </footer>
