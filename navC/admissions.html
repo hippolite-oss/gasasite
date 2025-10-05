@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recherche - Institut</title>
+  <title>À propos - Institut UATM-GASA</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -65,45 +65,51 @@
     }
     .nav-link:hover::before, .nav-link.active::before { width: 70%; }
     .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600; }
-    .section-title {
-      position: relative; margin-bottom: 3rem;
-      color: var(--marron-fonce); font-weight: 700; text-align: center;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-      width: 80px; height: 4px;
-      background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
-      border-radius: 2px;
-    }
-    .hero-research {
+    .hero-about {
       background: linear-gradient(rgba(93, 64, 55, 0.8), rgba(141, 110, 99, 0.8)), 
-        url('https://img.freepik.com/free-photo/scientists-working-lab_23-2148980275.jpg') center/cover no-repeat;
+        url('DSC00052-scaled.jpg') center/cover no-repeat;
       color: white;
       padding: 8rem 0;
       text-align: center;
       position: relative;
-      margin-bottom: 3rem;
       overflow: hidden;
     }
-    .hero-research::after {
+    .hero-about::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; width: 100%; height: 100px;
-      background: linear-gradient(to top,#f9f9f9,transparent);
+      background: linear-gradient(to top,#d7cece,transparent);
     }
-    .hero-research h1 {
+    .hero-about h1 {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
       margin-bottom: 1.5rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.20);
     }
-    .hero-research p {
+    .hero-about p {
       font-size: clamp(1.2rem,2vw,1.5rem);
       opacity:0.92;
     }
-    .research-section { padding: 5rem 0;}
-    .research-card {
+    .main-section { padding: 5rem 0; }
+    .section-title {
+      color: var(--marron-fonce);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
+      border-radius: 2px;
+    }
+    .about-card {
       border: none;
       border-radius: 12px;
       overflow: hidden;
@@ -111,9 +117,10 @@
       transition: var(--transition);
       margin-bottom: 2rem;
       height: 100%;
+      background-color: var(--blanc);
     }
-    .research-card:hover {
-      transform: translateY(-10px);
+    .about-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
     }
     .card-header {
@@ -122,156 +129,92 @@
       font-weight: 600;
       padding: 1.2rem;
     }
-    .card-img-top {
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-    .research-card:hover .card-img-top {
-      transform: scale(1.05);
-    }
     .card-body {
       padding: 1.5rem;
-      background-color: var(--blanc);
     }
-    .research-badge {
-      background-color: var(--jaune-vif);
-      color: var(--marron-fonce);
-      padding: 0.5rem 0.8rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.8rem;
-      display: inline-block;
-      margin-bottom: 1rem;
+    .founder-section {
+      background-color: #f5f5f5;
+      padding: 5rem 0;
     }
-    .list-unstyled li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-    .list-unstyled li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--marron-clair);
-      font-weight: bold;
-    }
-    .stats-section { padding: 5rem 0; background-color: #f5f5f5;}
-    .stat-item {
-      text-align: center;
-      padding: 2rem;
+    .founder-img {
       border-radius: 12px;
-      background-color: var(--blanc);
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-      height: 100%;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 2rem;
+      max-height: 400px;
+      object-fit: cover;
     }
-    .stat-item:hover {
+    .mission-vision-section {
+      padding: 5rem 0;
+    }
+    .mission-card {
+      background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
+      color: white;
+      border-radius: 12px;
+      padding: 2.5rem;
+      height: 100%;
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+    }
+    .mission-card:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-lg);
     }
-    .stat-number {
-      font-size: 2.5rem;
+    .mission-card h3 {
+      color: var(--jaune-vif);
+      margin-bottom: 1.5rem;
       font-weight: 700;
-      color: var(--marron-fonce);
-      margin-bottom: 0.5rem;
     }
-    .team-section { padding: 5rem 0;}
-    .team-member {
+    .mission-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--jaune-vif);
+    }
+    .stats-section {
+      background: linear-gradient(rgba(93, 64, 55, 0.9), rgba(141, 110, 99, 0.9)), 
+        url('DSC00040-scaled.jpg') center/cover no-repeat;
+      color: white;
+      padding: 5rem 0;
       text-align: center;
-      margin-bottom: 2rem;
     }
-    .team-img-container {
+    .stat-item {
+      padding: 2rem;
+    }
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--jaune-vif);
+    }
+    .stat-text {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .video-section { padding: 5rem 0; background-color: #f5f5f5;}
+    .video-section h2 {
+      color: var(--marron-fonce);
+      font-weight: 700;
+      margin-bottom: 3rem;
+      text-align: center;
       position: relative;
-      width: 150px;
-      height: 150px;
-      margin: 0 auto 1rem;
     }
-    .team-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 5px solid var(--jaune-pale);
-      transition: var(--transition);
-    }
-    .team-img:hover {
-      transform: scale(1.1);
-      border-color: var(--jaune-vif);
-    }
-    .team-social {
+    .video-section h2::after {
+      content: '';
       position: absolute;
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      display: flex;
-      background-color: white;
-      border-radius: 50px;
-      padding: 0.3rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transition: var(--transition);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--jaune-vif), var(--marron-clair));
+      border-radius: 2px;
     }
-    .team-img-container:hover .team-social {
-      opacity: 1;
-      bottom: -15px;
-    }
-    .team-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: var(--marron-clair);
-      color: white;
-      margin: 0 0.2rem;
-      transition: var(--transition);
-      text-decoration: none;
-    }
-    .team-social a:hover {
-      background-color: var(--marron-fonce);
-      transform: translateY(-3px);
-    }
-    .pubs-section { padding: 5rem 0; background-color: #f5f5f5;}
-    .pub-item {
-      background-color: var(--blanc);
-      border-left: 4px solid var(--jaune-vif);
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      border-radius: 0 8px 8px 0;
-      box-shadow: var(--shadow-sm);
-      transition: var(--transition);
-    }
-    .pub-item:hover {
-      transform: translateX(5px);
-      box-shadow: var(--shadow-md);
-    }
-    .pub-title {
-      color: var(--marron-fonce);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .pub-meta {
-      color: var(--marron-clair);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    .btn-outline-primary {
-      border-color: var(--marron-clair);
-      color: var(--marron-clair);
-      transition: var(--transition);
-    }
-    .btn-outline-primary:hover {
-      background-color: var(--marron-clair);
-      border-color: var(--marron-clair);
-      color: white;
-    }
-    /* Nouveau footer */
+    .ratio { border-radius: 12px; box-shadow: var(--shadow-sm); transition: var(--transition);}
+    .ratio:hover { box-shadow: var(--shadow-lg);}
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white;
       padding: 4rem 0 2rem;
+      margin-top: 5rem;
     }
     .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .footer-links h5 {
@@ -340,20 +283,16 @@
     .copyright a { color: var(--jaune-pale); text-decoration: none;}
     .copyright a:hover { text-decoration: underline;}
     @media (max-width: 992px) {
-      .hero-research { padding: 6rem 0;}
-      .stat-number { font-size: 2rem;}
+      .hero-about { padding: 6rem 0;}
       .footer-logo { width: 120px;}
     }
     @media (max-width:768px) {
       .navbar-nav { padding-top: 1rem;}
       .nav-link { margin: 0.2rem 0;}
-      .hero-research { padding: 5rem 0;}
-      .team-img-container { width: 120px; height: 120px;}
+      .hero-about { padding: 5rem 0;}
       .footer-logo { width: 80px;}
     }
     @media (max-width:576px) {
-      .card-img-top { height: 150px;}
-      .stat-item { padding: 1.5rem;}
       .footer-logo { width: 60px;}
       .copyright { font-size: 0.8rem;}
       .social-icons a { width: 32px; height: 32px;}
@@ -365,7 +304,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
       <a class="navbar-brand" href="../index.html">
-        <img src="logo.png" alt="Logo UATM_GASA" width="40" height="40"> UATM-GASA
+        <img src="logo.png" alt="Logo Institut" width="40" height="40"> UATM-GASA
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Basculer la navigation">
         <span class="navbar-toggler-icon"></span>
@@ -375,199 +314,183 @@
           <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="facultes.html">Facultés</a></li>
           <li class="nav-item"><a class="nav-link" href="admissions.html">Admissions</a></li>
-          <li class="nav-item"><a class="nav-link active" href="recherche.html">Recherche</a></li>
+          <li class="nav-item"><a class="nav-link" href="recherche.html">Recherche</a></li>
           <li class="nav-item"><a class="nav-link" href="hebergement.html">Hébergement</a></li>
           <li class="nav-item"><a class="nav-link" href="informations.html">Informations</a></li>
+          <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
   <!-- Hero Section -->
-  <section class="hero-research">
+  <section class="hero-about">
     <div class="container">
-      <h1 class="display-3 fw-bold mb-4">Excellence en Recherche</h1>
-      <p class="lead">Innovation et découvertes au cœur de notre mission académique</p>
+      <h1 class="display-3 fw-bold mb-4">À propos de nous</h1>
+      <p class="lead">Découvrez l'histoire, la vision et les valeurs de l'Institut UATM-GASA</p>
     </div>
   </section>
-  <!-- Domaines de recherche -->
-  <section class="research-section">
+
+  <!-- Historique Section -->
+  <section class="main-section">
     <div class="container">
-      <h2 class="section-title">Nos Axes de Recherche</h2>
-      <div class="row g-4">
-        <!-- Domaine 1 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
+      <h2 class="section-title">Notre Histoire</h2>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="about-card">
             <div class="card-header">
-              <h5 class="mb-0">Sciences & Technologies</h5>
+              <h5 class="mb-0">Historique de l'Institut</h5>
             </div>
-            <img src="https://img.freepik.com/free-photo/robot-handshake-human-background-futuristic-digital-age_53876-129770.jpg" class="card-img-top" alt="Sciences">
             <div class="card-body">
-              <span class="badge research-badge mb-3">15 Laboratoires</span>
-              <p class="card-text">Recherche de pointe en intelligence artificielle, nanotechnologies et énergies renouvelables.</p>
-              <ul class="list-unstyled">
-                <li>3 ERC Grants</li>
-                <li>50 brevets déposés</li>
-                <li>Partenariats industriels</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Domaine 2 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
-            <div class="card-header">
-              <h5 class="mb-0">Santé & Biotechnologies</h5>
-            </div>
-            <img src="https://img.freepik.com/free-photo/scientist-working-laboratory_23-2148980276.jpg" class="card-img-top" alt="Santé">
-            <div class="card-body">
-              <span class="badge research-badge mb-3">8 Centres d'excellence</span>
-              <p class="card-text">Recherche translationnelle en oncologie, neurosciences et médecine régénérative.</p>
-              <ul class="list-unstyled">
-                <li>12 essais cliniques</li>
-                <li>Partenariats hospitaliers</li>
-                <li>Plateformes technologiques</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- Domaine 3 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
-            <div class="card-header">
-              <h5 class="mb-0">Sciences Humaines & Sociales</h5>
-            </div>
-            <img src="https://img.freepik.com/free-photo/group-diverse-people-having-business-meeting_53876-25060.jpg" class="card-img-top" alt="SHS">
-            <div class="card-body">
-              <span class="badge research-badge mb-3">6 Chaires UNESCO</span>
-              <p class="card-text">Études interdisciplinaires sur les sociétés contemporaines et les patrimoines culturels.</p>
-              <ul class="list-unstyled">
-                <li>8 programmes internationaux</li>
-                <li>Observatoires terrain</li>
-                <li>Études longitudinales</li>
-              </ul>
+              <p>Initialement dénommée GASA-FORMATION / SUPELEC BÉNIN, notre institution a été créée en 1992 par arrêté ministériel N°009/MENRS/CAB/DC/DAPS/SP du 23 janvier 1997.</p>
+              <p>Elle avait pour vocation la formation des techniciens supérieurs du premier cycle universitaire (BAC+2) couronnée par le diplôme de Brevet de Technicien Supérieur (BTS).</p>
+              <p>GASA-FORMATION a subi une mutation pour devenir Université privée (UATM), le 1er Février 2006 par l'Arrêté Ministériel N°-003/MESRS/CAB/DC/ SMG/ DPP/DESUP/SP.</p>
+              <p>GASA-FORMATION-SUPELEC BÉNIN a connu une progression croissante et est passée de 60 étudiants à sa création avec deux filières que sont l'Électronique (EL) et l'Informatique de Gestion (IG), à plus de 2000 étudiants aujourd'hui avec un ensemble de filières agréées évaluées à 23.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Chiffres clés -->
+
+  <!-- Section Statistiques -->
   <section class="stats-section">
     <div class="container">
-      <h2 class="section-title">Notre Recherche en Chiffres</h2>
-      <div class="row g-4">
-        <div class="col-md-3">
+      <div class="row">
+        <div class="col-md-3 col-6">
           <div class="stat-item">
-            <div class="stat-number" data-count="120">0</div>
-            <p>Projets actifs</p>
+            <div class="stat-number">30+</div>
+            <div class="stat-text">Années d'expérience</div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="stat-item">
-            <div class="stat-number" data-count="45">0</div>
-            <p>M€ de financement</p>
+            <div class="stat-number">2000+</div>
+            <div class="stat-text">Étudiants</div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="stat-item">
-            <div class="stat-number" data-count="320">0</div>
-            <p>Publications/an</p>
+            <div class="stat-number">23</div>
+            <div class="stat-text">Filières agréées</div>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-6">
           <div class="stat-item">
-            <div class="stat-number" data-count="18">0</div>
-            <p>Prix internationaux</p>
+            <div class="stat-number">60</div>
+            <div class="stat-text">Premiers étudiants</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Équipe -->
-  <section class="team-section">
+
+  <!-- Section Fondateur -->
+  <section class="founder-section">
     <div class="container">
-      <h2 class="section-title">Nos Chercheurs Éminents</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="team-member">
-            <div class="team-img-container">
-              <img src="logo.png" class="team-img" alt="Chercheur 1">
-              <div class="team-social">
-                <a href="#"><i class="fab fa-google-scholar"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <h4>Pr. Sophie Martin</h4>
-            <p class="text-muted">Chimie des matériaux</p>
-            <p>Médaille d'or CNRS 2022</p>
-          </div>
+      <h2 class="section-title">Notre Fondateur</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <img src="WhatsApp_Image_2022-05-25_at_12.38.09-removebg-preview.png" 
+               alt="Dr Théophane AYI - Fondateur de l'UATM GASA" 
+               class="founder-img w-100">
         </div>
-        <div class="col-md-4">
-          <div class="team-member">
-            <div class="team-img-container">
-              <img src="logo.png" class="team-img" alt="Chercheur 2">
-              <div class="team-social">
-                <a href="#"><i class="fab fa-google-scholar"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <h4>Dr. Jean Lefèvre</h4>
-            <p class="text-muted">Économie comportementale</p>
-            <p>ERC Advanced Grant</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="team-member">
-            <div class="team-img-container">
-              <img src="logo.png" class="team-img" alt="Chercheur 3">
-              <div class="team-social">
-                <a href="#"><i class="fab fa-google-scholar"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-              </div>
-            </div>
-            <h4>Pr. Amina Diallo</h4>
-            <p class="text-muted">Immunothérapie</p>
-            <p>Prix Breakthrough 2023</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Publications récentes -->
-  <section class="pubs-section">
-    <div class="container">
-      <h2 class="section-title">Publications Récentes</h2>
-      <div class="row justify-content-center">
         <div class="col-lg-8">
-          <div class="pub-item">
-            <h5 class="pub-title">Nouveaux matériaux supraconducteurs à haute température</h5>
-            <p class="pub-meta">Nature Materials, Mars 2023 - Pr. Sophie Martin et al.</p>
-            <p>Découverte de nouveaux matériaux supraconducteurs fonctionnant à des températures record, ouvrant la voie à des applications énergétiques révolutionnaires.</p>
-            <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
+          <div class="about-card">
+            <div class="card-header">
+              <h5 class="mb-0">Dr Théophane AYI - Fondateur de l'UATM GASA</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="fw-bold mb-3">Parcours du Président et motivation à l'origine de la création de l'UATM</h6>
+              <p>« Je fus l'un de ceux qui ont bénéficié dans les années 60-70 de l'opportunité d'aller en France ou sous d'autres cieux, pour y poursuivre leurs études supérieures. »</p>
+              <p>« Je dois avouer que la chance a été de mon côté. En effet après l'obtention du BAC, mon frère, le professeur AHYI René Gualbert m'a permis de découvrir les réalités de l'enseignement technique à l'IUT de Dakar, ensuite à l'Université de Technologie de Compiègne (UTC) avec le bénéfice d'une bourse d'état, finalement et surtout à Orsay ou j'ai obtenu un poste de Maître Assistant Associé qui m'a permis de peaufiner et de finir ma thèse en 1985. »</p>
+              <p>« Tout en étant enseignant Chercheur à Orsay, je mettais aussi à profit mes compétences en tant que professeur technique à Créteil. Après 12 ans de séjour en France, ma fibre patriotique se mit à vibrer pour le Bénin. Mais fallait-il rentrer pour braver la rigueur et la rigidité d'un régime politique axé sur une révolution marxiste totalitaire? L'urgence de l'assistance que je pouvais apporter à mes jeunes frères restés au Bénin pris le pas sur tout autre considération puisque, les séquelles de l'option socialiste avaient suscité le gel des relations avec la France, en empêchant les jeunes de s'y expatrier. »</p>
+              <p>« J'ai du rentrer au Bénin ou je me suis mis au service de l'université d'Abomey-Calavi en tant qu'enseignant. Affecté au département Génie électrique comme responsable, je me suis rendu compte que certains facteurs dont je vous fait l'économie, limitaient l'assistance que je voulais apporter à mes jeunes frères. J'ai donc été mu par la nécessité de créer un établissement d'enseignement supérieur à savoir GASA-FORMATION, chose faite depuis 30 ans. Au demeurant, il ne serait pas exagérer de dire que je fus l'un des pionniers en la matière et ce grâce au soutien indéfectible de ma mère qui était Administrateur Gérante de l'UATM : Flanda Antoinette AHYI. »</p>
+            </div>
           </div>
-          <div class="pub-item">
-            <h5 class="pub-title">Impact des politiques climatiques sur les inégalités</h5>
-            <p class="pub-meta">Science, Février 2023 - Dr. Jean Lefèvre et al.</p>
-            <p>Analyse transnationale des effets redistributifs des politiques climatiques dans 45 pays, avec recommandations pour des transitions justes.</p>
-            <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Mission, Vision, Objectifs -->
+  <section class="mission-vision-section">
+    <div class="container">
+      <h2 class="section-title">Notre Mission, Vision et Objectifs</h2>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="mission-card">
+            <i class="fas fa-eye"></i>
+            <h3>Notre Vision</h3>
+            <p>Apporter à la société moderne, des talents instruits, compétents et consciencieux pour qu'ils puissent relever brillamment les défis d'un développement durable.</p>
           </div>
-          <div class="pub-item">
-            <h5 class="pub-title">Découverte d'une nouvelle cible thérapeutique en oncologie</h5>
-            <p class="pub-meta">Cell, Janvier 2023 - Pr. Amina Diallo et al.</p>
-            <p>Identification d'un nouveau mécanisme moléculaire impliqué dans la résistance aux traitements, ouvrant des perspectives pour de nouvelles thérapies.</p>
-            <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
+        </div>
+        <div class="col-lg-4">
+          <div class="mission-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Notre Mission</h3>
+            <p>Offrir le meilleur de l'enseignement supérieur Africain à prix très compétitif et accélérer le développement du continent par le biais de la recherche et développement approfondi.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="mission-card">
+            <i class="fas fa-bullseye"></i>
+            <h3>Nos Objectifs</h3>
+            <p>Donner les moyens à nos étudiants de trouver un emploi ou de créer leur entreprise au plus tard 6 mois après l'obtention de leur diplôme et contribuer à la recherche à travers la publication d'au moins 10 articles par an et ceci en utilisant des profs locaux et des missionnaires venant du monde entier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Approche -->
+  <section class="main-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="about-card">
+            <div class="card-header">
+              <h5 class="mb-0">Une démarche centrée sur l'humain</h5>
+            </div>
+            <div class="card-body">
+              <p>« L'UATM ne cherche pas actuellement à se contenter d'un satisfecit par rapport au choix qu'elle a opéré ; mais il y a une évidence que l'on ne saurait nier ; le flux de jeunes vers l'extérieur pour des raisons d'études s'amenuise en faveur du bonheur de la nation. Nous ne pouvons que nous en réjouir, ainsi le souci qui a conduit à la création de GASA-Formation trouve actuellement toutes ses lettres de noblesse à travers les cadres supérieurs de haut niveau employés dans tous les secteurs scientifiques, techniques et professionnels de l'appareil de l'état béninois et même ailleurs. »</p>
+              <p>« L'UATM est partiellement satisfaite d'avoir formé des milliers de techniciens, cadres et elle poursuit une dynamique d'amélioration continue afin de répondre à une vision, une mission, et à une éthique toutes sous-tendues par l'excellence et différents labels de qualité. »</p>
+              <p>« Mieux faire, c'est mettre l'étudiant au cœur du processus en facilitant l'appropriation des connaissances de manière efficiente et efficace avec une nouvelle perspective pédagogique qui mêle Science, Technique et Méthode tout en se fondant sur une approche professionnalisée de métier sans négliger la formation de l'être ou de l'individu, car il va de soi qu'un cadre sans éthique ne peut opérer un changement, même s'il est compétent. Tel est l'un des objectifs que nous nous sommes fixé. »</p>
+              <p>« En outre, à l'heure d'une concurrence mondiale exacerbée, l'UATM doit se fonder sur d'excellentes pratiques afin d'offrir à ses étudiants la possibilité d'obtenir des diplômes des meilleures institutions de par le monde ; c'est ce qui justifie nos différents accords partenariaux. »</p>
+              <p>« In fine, faire de tout étudiant de l'UATM, un honnête homme du 21ème siècle qui sera au service d'un développement durable et harmonieux tout en valorisant les richesses infinies dont regorge le continent africain. Tel est le défi que relève chaque année l'UATM. »</p>
+              <p class="text-end fw-bold mt-4">- Dr Théophane AYI, Président de l'UATM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Vidéo -->
+  <section class="video-section">
+    <div class="container">
+      <h2 class="text-center">Découvrez notre Institut en vidéo</h2>
+      <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+          <div class="ratio ratio-16x9 shadow-lg rounded">
+            <iframe src="https://www.youtube.com/embed/0gDR-EM1iU0" 
+              title="Vidéo de présentation de notre Institut" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              class="rounded"></iframe>
           </div>
           <div class="text-center mt-4">
-            <a href="#" class="btn btn-primary">Voir toutes les publications</a>
+            <a href="https://www.youtube.com/watch?v=0gDR-EM1iU0" target="_blank" class="btn btn-primary btn-lg">
+              <i class="fab fa-youtube me-2"></i> Voir sur YouTube
+            </a>
           </div>
         </div>
       </div>
     </div>
   </section>
-  <!-- Nouveau Footer -->
+
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
@@ -590,14 +513,15 @@
             <li><a href="recherche.html">Recherche</a></li>
             <li><a href="hebergement.html">Hébergement</a></li>
             <li><a href="informations.html">Informations</a></li>
+            <li><a href="apropos.html">À propos</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
           <h5>Contacts</h5>
           <ul class="p-0">
-            <li><i class="fas fa-map-marker-alt"></i>  2ème rue à gauche apres le CEG Gbégamey</li>
-            <li><i class="fas fa-phone"></i> +229 01 65 78 77 21</li>
-            <li><i class="fas fa-envelope"></i>  info@uatm-gasa.com</li>
+            <li><i class="fas fa-map-marker-alt"></i>2ème rue à gauche après le CEG Gbégamey</li>
+            <li><i class="fas fa-phone"></i>+229 01 65 78 77 21</li>
+            <li><i class="fas fa-envelope"></i> info@uatm-gasa.com</li>
             <li><i class="fas fa-clock"></i> Lun-Ven : 8h-19h | Sam : 9h-13h</li>
           </ul>
         </div>
@@ -613,10 +537,11 @@
         </div>
       </div>
       <div class="copyright">
-        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+        <p class="mb-0">© 2023 Institut UATM-GASA - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
       </div>
     </div>
   </footer>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -626,7 +551,7 @@
     window.addEventListener('scroll', function() {
       document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
-    gsap.utils.toArray(".research-card").forEach((card, i) => {
+    gsap.utils.toArray(".about-card, .mission-card").forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
@@ -636,79 +561,51 @@
         y: 50,
         opacity: 0,
         duration: 0.8,
-        delay: i * 0.2
-      });
-    });
-    gsap.utils.toArray(".stat-item").forEach((item, i) => {
-      gsap.from(item, {
-        scrollTrigger: {
-          trigger: item,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
         delay: i * 0.1
       });
     });
-    gsap.utils.toArray(".team-member").forEach((member, i) => {
-      gsap.from(member, {
-        scrollTrigger: {
-          trigger: member,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.1
-      });
-    });
-    gsap.utils.toArray(".pub-item").forEach((pub, i) => {
-      gsap.from(pub, {
-        scrollTrigger: {
-          trigger: pub,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        },
-        x: -30,
-        opacity: 0,
-        duration: 0.6,
-        delay: i * 0.1
-      });
-    });
-    function animateCounters() {
-      const counters = document.querySelectorAll('.stat-number');
-      const speed = 200;
-      counters.forEach(counter => {
-        const target = +counter.getAttribute('data-count');
-        const count = +counter.innerText;
-        const increment = target / speed;
-        if (count < target) {
-          counter.innerText = Math.ceil(count + increment);
-          setTimeout(animateCounters, 1);
-        } else {
-          counter.innerText = target;
-        }
-      });
-    }
-    ScrollTrigger.create({
-      trigger: ".stats-section",
-      start: "top 70%",
-      onEnter: animateCounters,
-      once: true
-    });
-    gsap.from(".hero-research h1", { 
+    gsap.from(".hero-about h1", { 
       y: -50, 
       opacity: 0, 
       duration: 1 
     });
-    gsap.from(".hero-research p", { 
+    gsap.from(".hero-about p", { 
       y: 30, 
       opacity: 0, 
       duration: 1, 
       delay: 0.3 
+    });
+    gsap.from(".stat-item", {
+      scrollTrigger: {
+        trigger: ".stats-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2
+    });
+    gsap.from(".video-section h2", {
+      scrollTrigger: {
+        trigger: ".video-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8
+    });
+    gsap.from(".ratio", {
+      scrollTrigger: {
+        trigger: ".ratio",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      delay: 0.2
     });
     gsap.from("footer", {
       scrollTrigger: {
