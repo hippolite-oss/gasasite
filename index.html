@@ -28,6 +28,9 @@
       overflow-x: hidden;
       font-size: 1rem;
       line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     a { transition: var(--transition);}
     img { max-width: 100%;}
@@ -318,37 +321,33 @@
       color: var(--marron-clair);
     }
     
+    /* Footer du premier fichier */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
-      color: white; 
+      color: white;
       padding: 4rem 0 2rem;
-      opacity: 0;
-      transform: translateY(30px);
+      margin-top: auto;
     }
-    .footer-logo { 
-      width: 150px; 
-      margin-bottom: 1.5rem; 
-      filter: brightness(0) invert(1);
-    }
-    .footer-links h5 { 
-      color: var(--jaune-vif); 
-      margin-bottom: 1.5rem; 
+    .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
+    .footer-links h5 {
+      color: var(--jaune-vif);
+      margin-bottom: 1.5rem;
       font-weight: 600;
     }
-    .footer-links ul {
-      list-style: none; 
-      padding-left: 0;
-    }
+    .footer-links ul { list-style: none; padding-left: 0;}
     .footer-links li {
       margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
     }
-    .footer-links a { 
-      color: rgba(255,255,255,0.8); 
-      text-decoration: none; 
+    .footer-links li i { margin-right: 10px; width: 20px; text-align: center;}
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
       transition: var(--transition);
     }
-    .footer-links a:hover { 
-      color: var(--jaune-vif); 
+    .footer-links a:hover {
+      color: var(--jaune-vif);
       padding-left: 5px;
     }
     .social-icons {
@@ -374,26 +373,28 @@
     .social-icons a:hover {
       background-color: var(--jaune-vif);
       color: var(--marron-fonce);
-      transform: translateY(-3px) scale(1.08);
+      transform: translateY(-3px);
+    }
+    .newsletter-input {
+      border-radius: 50px 0 0 50px !important;
+      border: none;
+      padding: 0.8rem 1rem;
+    }
+    .newsletter-btn {
+      border-radius: 0 50px 50px 0 !important;
+      border: none;
     }
     .copyright {
-      border-top: 1px solid rgba(255,255,255,0.10);
-      padding-top: 1.5rem; 
-      margin-top: 3rem; 
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.5rem;
+      margin-top: 3rem;
       text-align: center;
-      color: rgba(255,255,255,0.7); 
-      font-size: 0.95rem;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
     }
-    .input-group .form-control:focus {
-      box-shadow: 0 0 0 0.2rem rgba(93, 64, 55, 0.18);
-      border-color: var(--marron-fonce);
-    }
+    .copyright a { color: var(--jaune-pale); text-decoration: none;}
+    .copyright a:hover { text-decoration: underline;}
     
-    @media (max-width: 992px) {
-      .hero-title { font-size: 2.8rem;}
-      .hero-subtitle { font-size: 1.2rem;}
-      .footer-logo { width: 120px;}
-    }
     @media (max-width:768px) {
       .hero-section { padding: 6rem 0;}
       .hero-title { font-size: 2.2rem;}
@@ -427,7 +428,7 @@
 </head>
 <body>
   <!-- Bouton WhatsApp flottant -->
-  <a href="https://wa.me/2290165787721?text=Bonjour%20UATM-GASA,%20je%20souhaite%20obtenir%20plus%20d'informations" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+  <a href="https://wa.me/229156169813?text=Bonjour%20UATM-GASA,%20je%20souhaite%20obtenir%20plus%20d'informations" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -551,7 +552,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer du premier fichier -->
   <footer>
     <div class="container">
       <div class="row">
@@ -570,18 +571,20 @@
           <ul class="p-0">
             <li><a href="index.html">Accueil</a></li>
             <li><a href="navC/facultes.html">Facultés</a></li>
-            <li><a href="navC/admissions.html">Admissions</a></li>
+            <li><a href="navC/apropos.html">À propos</a></li>
             <li><a href="navC/recherche.html">Recherche</a></li>
             <li><a href="navC/hebergement.html">Hébergement</a></li>
             <li><a href="navC/informations.html">Informations</a></li>
+            <li><a href="navC/vie-etudiante.html">Vie Étudiante</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
           <h5>Contacts</h5>
           <ul class="p-0">
-            <li><i class="fas fa-map-marker-alt"></i> 2ème rue à gauche apres le CEG Gbégamey</li>
+            <li><i class="fas fa-map-marker-alt"></i>2ème rue à gauche après le CEG Gbégamey</li>
             <li><i class="fas fa-phone"></i>+229 01 65 78 77 21</li>
             <li><i class="fas fa-envelope"></i> info@uatm-gasa.com</li>
+            <li><i class="fas fa-clock"></i> Lun-Ven : 8h-19h | Sam : 9h-13h</li>
           </ul>
         </div>
         <div class="col-lg-3 mb-4 text-center text-lg-start">
@@ -596,7 +599,7 @@
         </div>
       </div>
       <div class="copyright">
-        <p class="mb-0">© 2025 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+        <p class="mb-0">© 2025 Institut UATM-GASA - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
       </div>
     </div>
   </footer>
