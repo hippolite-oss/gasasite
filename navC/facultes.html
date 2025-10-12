@@ -27,9 +27,44 @@
       overflow-x: hidden;
       font-size: 1rem;
       line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     a { transition: var(--transition);}
     img { max-width: 100%;}
+    
+    /* Bouton WhatsApp flottant */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      animation: pulse-whatsapp 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+    @keyframes pulse-whatsapp {
+      0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7); }
+      100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    }
+    
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
       box-shadow: var(--shadow-sm);
@@ -189,7 +224,7 @@
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white;
       padding: 4rem 0 2rem;
-      margin-top: 5rem;
+      margin-top: auto;
     }
     .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .footer-links h5 {
@@ -267,16 +302,35 @@
       .hero-faculties { padding: 5rem 0;}
       .faculty-card .card-img-top { height: 150px;}
       .footer-logo { width: 80px;}
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
     }
     @media (max-width:576px) {
       .card-img-top { height: 120px;}
       .footer-logo { width: 60px;}
       .copyright { font-size: 0.8rem;}
       .social-icons a { width: 32px; height: 32px;}
+      .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Bouton WhatsApp flottant -->
+  <a href="https://wa.me/2290156169813?text=Bonjour%20UATM-GASA,%20je%20souhaite%20obtenir%20plus%20d'informations%20sur%20vos%20facultés" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
@@ -400,29 +454,7 @@
       </div>
     </div>
   </section>
-  <!-- Section Vidéo -->
-  <section class="video-section">
-    <div class="container">
-      <h2 class="text-center">Découvrez notre Institut en vidéo</h2>
-      <div class="row justify-content-center mt-5">
-        <div class="col-lg-8">
-          <div class="ratio ratio-16x9 shadow-lg rounded">
-            <iframe src="https://www.youtube.com/embed/0gDR-EM1iU0" 
-              title="Vidéo de présentation de notre Institut" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowfullscreen
-              class="rounded"></iframe>
-          </div>
-          <div class="text-center mt-4">
-            <a href="https://www.youtube.com/watch?v=0gDR-EM1iU0" target="_blank" class="btn btn-primary btn-lg">
-              <i class="fab fa-youtube me-2"></i> Voir sur YouTube
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
   <!-- Nouveau Footer -->
   <footer>
     <div class="container">
@@ -442,10 +474,11 @@
           <ul class="p-0">
             <li><a href="../index.html">Accueil</a></li>
             <li><a href="facultes.html">Facultés</a></li>
-            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="apropos.html">À propos</a></li>
             <li><a href="recherche.html">Recherche</a></li>
             <li><a href="hebergement.html">Hébergement</a></li>
             <li><a href="informations.html">Informations</a></li>
+            <li><a href="vie-etudiante.html">Vie Étudiante</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
@@ -536,6 +569,15 @@
       opacity: 0,
       y: 50,
       duration: 1
+    });
+    
+    // Animation pour le bouton WhatsApp
+    gsap.to(".whatsapp-float", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      delay: 1.5,
+      ease: "back.out(1.7)"
     });
   </script>
 </body>
