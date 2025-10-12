@@ -27,9 +27,44 @@
       overflow-x: hidden;
       font-size: 1rem;
       line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     a { transition: var(--transition);}
     img { max-width: 100%;}
+    
+    /* Bouton WhatsApp flottant */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      animation: pulse-whatsapp 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+    @keyframes pulse-whatsapp {
+      0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7); }
+      100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    }
+    
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
       box-shadow: var(--shadow-sm);
@@ -215,7 +250,7 @@
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white;
       padding: 4rem 0 2rem;
-      margin-top: 5rem;
+      margin-top: auto;
     }
     .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .footer-links h5 {
@@ -292,15 +327,34 @@
       .nav-link { margin: 0.2rem 0;}
       .hero-about { padding: 5rem 0;}
       .footer-logo { width: 80px;}
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
     }
     @media (max-width:576px) {
       .footer-logo { width: 60px;}
       .copyright { font-size: 0.8rem;}
       .social-icons a { width: 32px; height: 32px;}
+      .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Bouton WhatsApp flottant -->
+  <a href="https://wa.me/2290165787721?text=Bonjour%20UATM-GASA,%20je%20souhaite%20obtenir%20plus%20d'informations%20sur%20votre%20institut" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
@@ -314,7 +368,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="../index.html">Accueil</a></li>
           <li class="nav-item"><a class="nav-link" href="facultes.html">Facultés</a></li>
-          <li class="nav-item"><a class="nav-link" href="apropos.html">À propos de nous</a></li>
+          <li class="nav-item"><a class="nav-link active" href="apropos.html">À propos de nous</a></li>
           <li class="nav-item"><a class="nav-link" href="recherche.html">Recherche</a></li>
           <li class="nav-item"><a class="nav-link" href="vie-etudiante.html">Vie Étudiante</a></li>
           <li class="nav-item"><a class="nav-link" href="informations.html">Informations</a></li>
@@ -509,11 +563,11 @@
           <ul class="p-0">
             <li><a href="../index.html">Accueil</a></li>
             <li><a href="facultes.html">Facultés</a></li>
-            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="apropos.html">À propos</a></li>
             <li><a href="recherche.html">Recherche</a></li>
             <li><a href="hebergement.html">Hébergement</a></li>
             <li><a href="informations.html">Informations</a></li>
-            <li><a href="apropos.html">À propos</a></li>
+            <li><a href="vie-etudiante.html">Vie Étudiante</a></li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 text-center text-lg-start footer-links">
@@ -616,6 +670,15 @@
       opacity: 0,
       y: 50,
       duration: 1
+    });
+    
+    // Animation pour le bouton WhatsApp
+    gsap.to(".whatsapp-float", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      delay: 1.5,
+      ease: "back.out(1.7)"
     });
   </script>
 </body>
