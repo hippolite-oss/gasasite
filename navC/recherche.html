@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="../navC/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UATM-GASA</title>
+  <title>UATM-GASA - Recherche</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -30,13 +30,50 @@
     }
     a { transition: var(--transition);}
     img { max-width: 100%;}
+    
+    /* Bouton WhatsApp flottant */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      animation: pulse-whatsapp 2s infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+      animation: none;
+    }
+    @keyframes pulse-whatsapp {
+      0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.7); }
+      100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    }
+    
     .navbar {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair)) !important;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       padding: 1rem 0;
     }
-    .navbar.scrolled { padding: 0.5rem 0; box-shadow: var(--shadow-md);}
+    .navbar.scrolled { 
+      padding: 0.5rem 0; 
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(93,64,55,0.95), rgba(141,110,99,0.95)) !important;
+    }
     .navbar-brand { font-weight: 700; display: flex; align-items: center; letter-spacing:1px;}
     .navbar-brand img { margin-right: 10px; transition: var(--transition);}
     .navbar-brand:hover img { animation: pulse 1s infinite;}
@@ -98,12 +135,19 @@
       font-weight: 700;
       margin-bottom: 1.5rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.20);
+      opacity: 0;
+      transform: translateY(30px);
     }
     .hero-research p {
       font-size: clamp(1.2rem,2vw,1.5rem);
-      opacity:0.92;
+      opacity:0;
+      transform: translateY(30px);
     }
-    .research-section { padding: 5rem 0;}
+    .research-section { 
+      padding: 5rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+    }
     .research-card {
       border: none;
       border-radius: 12px;
@@ -112,6 +156,8 @@
       transition: var(--transition);
       margin-bottom: 2rem;
       height: 100%;
+      opacity: 0;
+      transform: translateY(30px);
     }
     .research-card:hover {
       transform: translateY(-10px);
@@ -157,7 +203,12 @@
       color: var(--marron-clair);
       font-weight: bold;
     }
-    .stats-section { padding: 5rem 0; background-color: #f5f5f5;}
+    .stats-section { 
+      padding: 5rem 0; 
+      background-color: #f5f5f5;
+      opacity: 0;
+      transform: translateY(30px);
+    }
     .stat-item {
       text-align: center;
       padding: 2rem;
@@ -166,6 +217,8 @@
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       height: 100%;
+      opacity: 0;
+      transform: translateY(30px);
     }
     .stat-item:hover {
       transform: translateY(-5px);
@@ -177,10 +230,16 @@
       color: var(--marron-fonce);
       margin-bottom: 0.5rem;
     }
-    .team-section { padding: 5rem 0;}
+    .team-section { 
+      padding: 5rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+    }
     .team-member {
       text-align: center;
       margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(30px);
     }
     .team-img-container {
       position: relative;
@@ -234,7 +293,12 @@
       background-color: var(--marron-fonce);
       transform: translateY(-3px);
     }
-    .pubs-section { padding: 5rem 0; background-color: #f5f5f5;}
+    .pubs-section { 
+      padding: 5rem 0; 
+      background-color: #f5f5f5;
+      opacity: 0;
+      transform: translateY(30px);
+    }
     .pub-item {
       background-color: var(--blanc);
       border-left: 4px solid var(--jaune-vif);
@@ -243,6 +307,8 @@
       border-radius: 0 8px 8px 0;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
+      opacity: 0;
+      transform: translateX(-30px);
     }
     .pub-item:hover {
       transform: translateX(5px);
@@ -257,6 +323,10 @@
       color: var(--marron-clair);
       font-size: 0.9rem;
       margin-bottom: 0.5rem;
+    }
+    .pub-highlight {
+      background: linear-gradient(135deg, var(--jaune-vif), var(--jaune-pale));
+      border-left: 4px solid var(--marron-fonce);
     }
     .btn-outline-primary {
       border-color: var(--marron-clair);
@@ -273,6 +343,8 @@
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
       color: white;
       padding: 4rem 0 2rem;
+      opacity: 0;
+      transform: translateY(30px);
     }
     .footer-logo { width: 150px; margin-bottom: 1.5rem; filter: brightness(0) invert(1);}
     .footer-links h5 {
@@ -340,6 +412,7 @@
     }
     .copyright a { color: var(--jaune-pale); text-decoration: none;}
     .copyright a:hover { text-decoration: underline;}
+    
     @media (max-width: 992px) {
       .hero-research { padding: 6rem 0;}
       .stat-number { font-size: 2rem;}
@@ -351,6 +424,13 @@
       .hero-research { padding: 5rem 0;}
       .team-img-container { width: 120px; height: 120px;}
       .footer-logo { width: 80px;}
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+      }
     }
     @media (max-width:576px) {
       .card-img-top { height: 150px;}
@@ -358,10 +438,22 @@
       .footer-logo { width: 60px;}
       .copyright { font-size: 0.8rem;}
       .social-icons a { width: 32px; height: 32px;}
+      .whatsapp-float {
+        width: 45px;
+        height: 45px;
+        bottom: 15px;
+        right: 15px;
+        font-size: 22px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Bouton WhatsApp flottant -->
+  <a href="https://wa.me/2290165787721?text=Bonjour%20UATM-GASA,%20je%20souhaite%20obtenir%20plus%20d'informations%20sur%20vos%20activités%20de%20recherche" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Navigation principale">
     <div class="container">
@@ -383,6 +475,7 @@
       </div>
     </div>
   </nav>
+
   <!-- Hero Section -->
   <section class="hero-research">
     <div class="container">
@@ -390,14 +483,15 @@
       <p class="lead">Innovation et découvertes au cœur de notre mission académique</p>
     </div>
   </section>
+
   <!-- Domaines de recherche -->
   <section class="research-section">
     <div class="container">
       <h2 class="section-title">Nos Axes de Recherche</h2>
       <div class="row g-4">
         <!-- Domaine 1 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
+        <div class="col-md-4">
+          <div class="card h-100 research-card">
             <div class="card-header">
               <h5 class="mb-0">Sciences & Technologies</h5>
             </div>
@@ -414,12 +508,12 @@
           </div>
         </div>
         <!-- Domaine 2 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
+        <div class="col-md-4">
+          <div class="card h-100 research-card">
             <div class="card-header">
               <h5 class="mb-0">Santé & Biotechnologies</h5>
             </div>
-            <img src="bio.jpg" class="card-img-top" alt="Santé">
+            <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Santé">
             <div class="card-body">
               <span class="badge research-badge mb-3">8 Centres d'excellence</span>
               <p class="card-text">Recherche translationnelle en oncologie, neurosciences et médecine régénérative.</p>
@@ -432,12 +526,12 @@
           </div>
         </div>
         <!-- Domaine 3 -->
-        <div class="col-md-4 research-card">
-          <div class="card h-100">
+        <div class="col-md-4">
+          <div class="card h-100 research-card">
             <div class="card-header">
               <h5 class="mb-0">Sciences Humaines & Sociales</h5>
             </div>
-            <img src="so.jpg" class="card-img-top" alt="SHS">
+            <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="SHS">
             <div class="card-body">
               <span class="badge research-badge mb-3">6 Chaires UNESCO</span>
               <p class="card-text">Études interdisciplinaires sur les sociétés contemporaines et les patrimoines culturels.</p>
@@ -452,6 +546,7 @@
       </div>
     </div>
   </section>
+
   <!-- Chiffres clés -->
   <section class="stats-section">
     <div class="container">
@@ -484,6 +579,7 @@
       </div>
     </div>
   </section>
+
   <!-- Équipe -->
   <section class="team-section">
     <div class="container">
@@ -500,7 +596,7 @@
               </div>
             </div>
             <h4>Pr. AKPONAN M A</h4>
-            <p class="text-muted">chercheur en sciences informatiques</p>
+            <p class="text-muted">Chercheur en sciences informatiques</p>
             <p>Médaille d'or CNRS 2024</p>
           </div>
         </div>
@@ -516,7 +612,7 @@
             </div>
             <h4>Pr. OLUBO</h4>
             <p class="text-muted">Chercheur en gestion de données</p>
-            <p>Médaille d’Argent CNRS 2024</p>
+            <p>Médaille d'Argent CNRS 2024</p>
           </div>
         </div>
         <div class="col-md-4">
@@ -537,37 +633,60 @@
       </div>
     </div>
   </section>
+
   <!-- Publications récentes -->
   <section class="pubs-section">
     <div class="container">
       <h2 class="section-title">Publications Récentes</h2>
       <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-10">
+          <!-- Publication mise en avant -->
+          <div class="pub-item pub-highlight">
+            <span class="badge bg-danger mb-2">Nouveau</span>
+            <h5 class="pub-title">Transformer-based Models for Biomedical Text Mining: A Comprehensive Review</h5>
+            <p class="pub-meta"><strong>Journal of Biomedical Informatics</strong> - Juin 2024 - Pr. AKPONAN M A et al.</p>
+            <p>Cette revue systématique évalue l'efficacité des modèles Transformer dans l'extraction d'informations médicales à partir de textes cliniques, avec une analyse comparative de BERT, BioBERT et ClinicalBERT.</p>
+            <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
+            <a href="#" class="btn btn-sm btn-outline-secondary ms-2">Télécharger PDF</a>
+          </div>
+          
           <div class="pub-item">
-            <h5 class="pub-title">Nouveaux matériaux supraconducteurs à haute température</h5>
-            <p class="pub-meta">Nature Materials, Mars 2023 - Pr. Sophie Martin et al.</p>
-            <p>Découverte de nouveaux matériaux supraconducteurs fonctionnant à des températures record, ouvrant la voie à des applications énergétiques révolutionnaires.</p>
+            <h5 class="pub-title">Optimization of Data Storage in Distributed Systems Using Machine Learning Algorithms</h5>
+            <p class="pub-meta"><strong>IEEE Transactions on Knowledge and Data Engineering</strong> - Mai 2024 - Pr. OLUBO et al.</p>
+            <p>Proposition d'un nouveau framework d'optimisation de stockage distribué utilisant des algorithmes de reinforcement learning pour améliorer l'efficacité de 27% par rapport aux méthodes traditionnelles.</p>
             <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
           </div>
+          
           <div class="pub-item">
-            <h5 class="pub-title">Impact des politiques climatiques sur les inégalités</h5>
-            <p class="pub-meta">Science, Février 2023 - Dr. Jean Lefèvre et al.</p>
-            <p>Analyse transnationale des effets redistributifs des politiques climatiques dans 45 pays, avec recommandations pour des transitions justes.</p>
+            <h5 class="pub-title">Industrial IoT Security: A Novel Framework for Anomaly Detection in Smart Manufacturing</h5>
+            <p class="pub-meta"><strong>Computers & Security</strong> - Avril 2024 - Pr. LAFITE et al.</p>
+            <p>Développement d'un système de détection d'anomalies basé sur l'apprentissage automatique pour sécuriser les environnements IoT industriels, testé avec succès sur 3 sites de production.</p>
             <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
           </div>
+          
           <div class="pub-item">
-            <h5 class="pub-title">Découverte d'une nouvelle cible thérapeutique en oncologie</h5>
-            <p class="pub-meta">Cell, Janvier 2023 - Pr. Amina Diallo et al.</p>
-            <p>Identification d'un nouveau mécanisme moléculaire impliqué dans la résistance aux traitements, ouvrant des perspectives pour de nouvelles thérapies.</p>
+            <h5 class="pub-title">Deep Learning Approaches for Early Detection of Alzheimer's Disease Using Multimodal Data</h5>
+            <p class="pub-meta"><strong>Nature Communications</strong> - Mars 2024 - Dr. Sophie Martin et al.</p>
+            <p>Modèle de deep learning intégrant IRM, données génétiques et cliniques pour la détection précoce de la maladie d'Alzheimer avec une précision de 94%.</p>
             <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
           </div>
+          
+          <div class="pub-item">
+            <h5 class="pub-title">Sustainable Energy Solutions for West African Communities: A Techno-Economic Analysis</h5>
+            <p class="pub-meta"><strong>Renewable and Sustainable Energy Reviews</strong> - Février 2024 - Dr. Kwame Johnson et al.</p>
+            <p>Évaluation comparative des solutions énergétiques durables adaptées aux communautés rurales d'Afrique de l'Ouest, intégrant aspects techniques, économiques et sociaux.</p>
+            <a href="#" class="btn btn-sm btn-outline-primary">Lire l'article</a>
+          </div>
+          
           <div class="text-center mt-4">
             <a href="#" class="btn btn-primary">Voir toutes les publications</a>
+            <a href="#" class="btn btn-outline-primary ms-2">Archives des publications</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
   <!-- Nouveau Footer -->
   <footer>
     <div class="container">
@@ -603,8 +722,8 @@
           </ul>
         </div>
         <div class="col-lg-3 mb-4 text-center text-lg-start">
-          <h5>Newsletter</h5>
-          <p>Abonnez-vous pour recevoir nos dernières actualités</p>
+          <h5>Newsletter Recherche</h5>
+          <p>Abonnez-vous pour recevoir nos dernières publications et actualités scientifiques</p>
           <div class="input-group mb-3">
             <input type="email" class="form-control newsletter-input" placeholder="Votre email">
             <button class="btn btn-warning newsletter-btn" type="button">
@@ -614,71 +733,179 @@
         </div>
       </div>
       <div class="copyright">
-        <p class="mb-0">© 2023 Institut - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+        <p class="mb-0">© 2024 Institut UATM-GASA - Tous droits réservés | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
       </div>
     </div>
   </footer>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
   <script>
     gsap.registerPlugin(ScrollTrigger);
+    
+    // Animation de la navbar au scroll
     window.addEventListener('scroll', function() {
       document.querySelector('.navbar').classList.toggle('scrolled', window.scrollY > 50);
     });
+
+    // Animation d'entrée pour la section hero
+    gsap.to(".hero-research h1", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.3,
+      ease: "power2.out"
+    });
+    
+    gsap.to(".hero-research p", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      delay: 0.6,
+      ease: "power2.out"
+    });
+
+    // Animation pour la section recherche
+    gsap.to(".research-section", {
+      scrollTrigger: {
+        trigger: ".research-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // Animation pour les cartes de recherche
     gsap.utils.toArray(".research-card").forEach((card, i) => {
-      gsap.from(card, {
+      gsap.to(card, {
         scrollTrigger: {
           trigger: card,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none"
         },
-        y: 50,
-        opacity: 0,
+        opacity: 1,
+        y: 0,
         duration: 0.8,
-        delay: i * 0.2
+        delay: i * 0.1,
+        ease: "power2.out"
       });
     });
+
+    // Animation pour la section statistiques
+    gsap.to(".stats-section", {
+      scrollTrigger: {
+        trigger: ".stats-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // Animation pour les items de statistiques
     gsap.utils.toArray(".stat-item").forEach((item, i) => {
-      gsap.from(item, {
+      gsap.to(item, {
         scrollTrigger: {
           trigger: item,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none"
         },
-        y: 30,
-        opacity: 0,
+        opacity: 1,
+        y: 0,
         duration: 0.6,
-        delay: i * 0.1
+        delay: i * 0.1,
+        ease: "power2.out"
       });
     });
+
+    // Animation pour la section équipe
+    gsap.to(".team-section", {
+      scrollTrigger: {
+        trigger: ".team-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // Animation pour les membres d'équipe
     gsap.utils.toArray(".team-member").forEach((member, i) => {
-      gsap.from(member, {
+      gsap.to(member, {
         scrollTrigger: {
           trigger: member,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none"
         },
-        y: 30,
-        opacity: 0,
+        opacity: 1,
+        y: 0,
         duration: 0.6,
-        delay: i * 0.1
+        delay: i * 0.1,
+        ease: "power2.out"
       });
     });
+
+    // Animation pour la section publications
+    gsap.to(".pubs-section", {
+      scrollTrigger: {
+        trigger: ".pubs-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // Animation pour les items de publication
     gsap.utils.toArray(".pub-item").forEach((pub, i) => {
-      gsap.from(pub, {
+      gsap.to(pub, {
         scrollTrigger: {
           trigger: pub,
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none none"
         },
-        x: -30,
-        opacity: 0,
+        opacity: 1,
+        x: 0,
         duration: 0.6,
-        delay: i * 0.1
+        delay: i * 0.1,
+        ease: "power2.out"
       });
     });
+
+    // Animation pour le footer
+    gsap.to("footer", {
+      scrollTrigger: {
+        trigger: "footer",
+        start: "top 80%",
+        toggleActions: "play none none none"
+      },
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power2.out"
+    });
+
+    // Animation pour le bouton WhatsApp
+    gsap.to(".whatsapp-float", {
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      delay: 1.5,
+      ease: "back.out(1.7)"
+    });
+
+    // Animation des compteurs
     function animateCounters() {
       const counters = document.querySelectorAll('.stat-number');
       const speed = 200;
@@ -694,32 +921,12 @@
         }
       });
     }
+    
     ScrollTrigger.create({
       trigger: ".stats-section",
       start: "top 70%",
       onEnter: animateCounters,
       once: true
-    });
-    gsap.from(".hero-research h1", { 
-      y: -50, 
-      opacity: 0, 
-      duration: 1 
-    });
-    gsap.from(".hero-research p", { 
-      y: 30, 
-      opacity: 0, 
-      duration: 1, 
-      delay: 0.3 
-    });
-    gsap.from("footer", {
-      scrollTrigger: {
-        trigger: "footer",
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1
     });
   </script>
 </body>
