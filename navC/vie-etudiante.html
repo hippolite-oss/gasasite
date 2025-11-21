@@ -34,6 +34,45 @@
     a { transition: var(--transition);}
     img { max-width: 100%;}
     
+    /* Styles pour la section améliorée */
+    .bg-marron-fonce { background-color: var(--marron-fonce) !important; }
+    .bg-marron-clair { background-color: var(--marron-clair) !important; }
+    .bg-jaune-pale { background-color: var(--jaune-pale) !important; }
+    .text-marron-fonce { color: var(--marron-fonce) !important; }
+    .text-marron-clair { color: var(--marron-clair) !important; }
+    
+    .feature-card {
+      transition: var(--transition);
+      border: 1px solid rgba(141, 110, 99, 0.1);
+      background: var(--blanc);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--jaune-vif);
+    }
+    
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--jaune-pale), var(--jaune-vif));
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+      background: linear-gradient(135deg, var(--marron-clair), var(--marron-fonce));
+    }
+    
+    .feature-card:hover .feature-icon i {
+      color: white !important;
+    }
+    
     /* Bouton WhatsApp flottant */
     .whatsapp-float {
       position: fixed;
@@ -60,8 +99,8 @@
       animation: none;
     }
     @keyframes pulse-whatsapp {
-      50% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-      50% { box-shadow: 0 4px 25px rgba(20, 27, 23, 0.7); }
+      0% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+      50% { box-shadow: 0 4px 25px rgba(37, 211, 102, 0.8); }
       100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
     }
     
@@ -99,6 +138,7 @@
     .nav-link:hover { color: var(--jaune-vif) !important; background: rgba(93, 64, 55, 0.09);}
     .nav-link:hover::before, .nav-link.active::before { width: 70%; }
     .nav-link.active { color: var(--jaune-vif) !important; font-weight: 600; }
+    
     /* Hero Section */
     .hero-student-life {
       background: linear-gradient(rgba(93,64,55,0.8),rgba(141,110,99,0.8)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
@@ -141,6 +181,7 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 20px rgba(255,213,79,0.4);
     }
+    
     /* Sections générales */
     .section-title {
       position: relative;
@@ -158,6 +199,7 @@
       border-radius: 2px;
     }
     .main-section { padding: 5rem 0; }
+    
     /* Cartes d'activités */
     .activity-card {
       border: none;
@@ -195,27 +237,13 @@
       display: inline-block;
       margin-bottom: 1rem;
     }
-    /* Section Vie en Classe */
+    
+    /* Section Vie en Classe AMÉLIORÉE */
     .classroom-section {
       background-color: #f5f5f5;
       padding: 5rem 0;
     }
-    .classroom-feature {
-      text-align: center;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      text-align: justify;
-
-    }
-    .classroom-feature i {
-      font-size: 3rem;
-      color: var(--marron-clair);
-      margin-bottom: 1.5rem;
-    }
-    .classroom-feature h4 {
-      color: var(--marron-fonce);
-      margin-bottom: 1rem;
-    }
+    
     /* Galerie */
     .gallery-section {
       padding: 5rem 0;
@@ -256,6 +284,7 @@
     .gallery-item:hover .gallery-overlay {
       transform: translateY(0);
     }
+    
     /* Style spécifique pour les vidéos dans la galerie */
     .gallery-item video {
       width: 100%;
@@ -274,6 +303,7 @@
     .gallery-item video::-webkit-media-controls-mute-button {
       filter: invert(1);
     }
+    
     /* Section Événements */
     .events-section {
       background-color: #f5f5f5;
@@ -306,6 +336,7 @@
       font-size: 1rem;
       text-transform: uppercase;
     }
+    
     /* Section Témoignages */
     .testimonials-section {
       padding: 5rem 0;
@@ -328,12 +359,14 @@
       position: relative;
     }
     .testimonial-text::before {
+      content: '"';
       font-size: 4rem;
       color: var(--jaune-vif);
       position: absolute;
       top: -20px;
       left: -10px;
       opacity: 0.3;
+      font-family: Georgia, serif;
     }
     .testimonial-author {
       display: flex;
@@ -346,6 +379,7 @@
       object-fit: cover;
       margin-right: 1rem;
     }
+    
     /* Footer */
     footer {
       background: linear-gradient(135deg, var(--marron-fonce), var(--marron-clair));
@@ -419,6 +453,7 @@
     }
     .copyright a { color: var(--jaune-pale); text-decoration: none;}
     .copyright a:hover { text-decoration: underline;}
+    
     /* Responsive */
     @media (max-width: 1200px) {
       .main-section, .classroom-section, .gallery-section, .events-section, .testimonials-section { padding: 3rem 0;}
@@ -558,43 +593,137 @@
     </div>
   </section>
 
-  <!-- Section Vie en Classe -->
+  <!-- Section Vie en Classe AMÉLIORÉE -->
   <section class="classroom-section">
     <div class="container">
       <h2 class="section-title">Apprentissage en Classe</h2>
-      <div class="row">
+      <p class="text-center mb-5 fs-5 text-muted">Découvrez notre environnement d'apprentissage innovant conçu pour votre réussite</p>
+      
+      <div class="row align-items-center mb-5">
         <div class="col-lg-6 mb-4">
-          <img src="./bradleyhypox.png" alt="Cours en classe" class="rounded shadow w-100">
+          <div class="position-relative">
+            <img src="./bradleyhypox.png" alt="Cours en classe interactif" class="rounded shadow w-100">
+            <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge bg-warning text-dark fs-6 p-2 shadow">Enseignement Dynamique</span>
+            </div>
+            <div class="position-absolute bottom-0 end-0 m-3">
+              <div class="bg-white rounded-circle p-2 shadow">
+                <i class="fas fa-play text-marron-fonce fs-4"></i>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="col-lg-6">
-          <div class="row">
-            <div class="col-md-6">
-              <div class="classroom-feature">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <h4>Enseignement Interactif</h4>
-                <p>Nos professeurs utilisent des méthodes pédagogiques modernes pour favoriser l'interaction et la participation active.</p>
+          <div class="ps-lg-4">
+            <h3 class="mb-4 text-marron-fonce">Un Environnement Pédagogique Moderne</h3>
+            <p class="mb-4 fs-6">Nos salles de classe sont conçues pour favoriser l'interaction, la collaboration et l'innovation. Avec des équipements de pointe et des méthodes d'enseignement éprouvées, nous préparons nos étudiants aux défis du monde professionnel.</p>
+            
+            <div class="row mb-4">
+              <div class="col-sm-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-jaune-pale rounded-circle p-3 me-3">
+                    <i class="fas fa-user-graduate text-marron-fonce fs-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="mb-1">95%</h5>
+                    <small class="text-muted">Taux de Réussite</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6 mb-3">
+                <div class="d-flex align-items-center">
+                  <div class="bg-jaune-pale rounded-circle p-3 me-3">
+                    <i class="fas fa-chalkboard text-marron-fonce fs-5"></i>
+                  </div>
+                  <div>
+                    <h5 class="mb-1">25+</h5>
+                    <small class="text-muted">Salles Équipées</small>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="classroom-feature">
-                <i class="fas fa-laptop-code"></i>
-                <h4>Technologie en Classe</h4>
-                <p>Des équipements technologiques de pointe sont mis à disposition pour un apprentissage pratique et moderne.</p>
-              </div>
+            
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge bg-light text-dark p-2"><i class="fas fa-wifi me-1"></i> Wi-Fi Haut Débit</span>
+              <span class="badge bg-light text-dark p-2"><i class="fas fa-projector me-1"></i> Vidéoprojecteurs</span>
+              <span class="badge bg-light text-dark p-2"><i class="fas fa-laptop me-1"></i> Équipements Numériques</span>
             </div>
-            <div class="col-md-6">
-              <div class="classroom-feature">
-                <i class="fas fa-users"></i>
-                <h4>Travail d'Équipe</h4>
-                <p>Les étudiants travaillent en groupes sur des projets concrets pour développer leurs compétences collaboratives.</p>
-              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid améliorée -->
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card text-center p-4 rounded-3 h-100">
+            <div class="feature-icon mx-auto mb-4">
+              <i class="fas fa-chalkboard-teacher fs-1 text-marron-clair"></i>
             </div>
-            <div class="col-md-6">
-              <div class="classroom-feature">
-                <i class="fas fa-flask"></i>
-                <h4>Apprentissage Pratique</h4>
-                <p>Des laboratoires équipés permettent aux étudiants d'appliquer immédiatement les concepts théoriques.</p>
-              </div>
+            <h4 class="h5 text-marron-fonce mb-3">Enseignement Interactif</h4>
+            <p class="text-muted mb-0">Méthodes pédagogiques modernes favorisant l'interaction et la participation active des étudiants.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card text-center p-4 rounded-3 h-100">
+            <div class="feature-icon mx-auto mb-4">
+              <i class="fas fa-laptop-code fs-1 text-marron-clair"></i>
+            </div>
+            <h4 class="h5 text-marron-fonce mb-3">Technologie Avancée</h4>
+            <p class="text-muted mb-0">Équipements technologiques de pointe pour un apprentissage pratique et moderne.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card text-center p-4 rounded-3 h-100">
+            <div class="feature-icon mx-auto mb-4">
+              <i class="fas fa-users fs-1 text-marron-clair"></i>
+            </div>
+            <h4 class="h5 text-marron-fonce mb-3">Travail Collaboratif</h4>
+            <p class="text-muted mb-0">Projets concrets en groupe pour développer les compétences collaboratives et l'esprit d'équipe.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="feature-card text-center p-4 rounded-3 h-100">
+            <div class="feature-icon mx-auto mb-4">
+              <i class="fas fa-flask fs-1 text-marron-clair"></i>
+            </div>
+            <h4 class="h5 text-marron-fonce mb-3">Apprentissage Pratique</h4>
+            <p class="text-muted mb-0">Laboratoires équipés permettant l'application immédiate des concepts théoriques.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section supplémentaire pour les méthodes pédagogiques -->
+      <div class="row mt-5 pt-5">
+        <div class="col-lg-4 mb-4">
+          <div class="d-flex align-items-start">
+            <div class="bg-marron-clair rounded-circle p-3 me-4">
+              <i class="fas fa-brain text-white fs-4"></i>
+            </div>
+            <div>
+              <h4 class="h5 text-marron-fonce mb-3">Pédagogie Active</h4>
+              <p class="text-muted">Apprentissage par problèmes et études de cas concrets pour développer l'esprit critique.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="d-flex align-items-start">
+            <div class="bg-marron-clair rounded-circle p-3 me-4">
+              <i class="fas fa-handshake text-white fs-4"></i>
+            </div>
+            <div>
+              <h4 class="h5 text-marron-fonce mb-3">Mentorat Personnalisé</h4>
+              <p class="text-muted">Accompagnement individuel par des enseignants expérimentés tout au long du parcours.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="d-flex align-items-start">
+            <div class="bg-marron-clair rounded-circle p-3 me-4">
+              <i class="fas fa-globe-africa text-white fs-4"></i>
+            </div>
+            <div>
+              <h4 class="h5 text-marron-fonce mb-3">Ouverture Internationale</h4>
+              <p class="text-muted">Programmes d'échanges et collaborations avec des institutions internationales partenaires.</p>
             </div>
           </div>
         </div>
@@ -857,7 +986,7 @@
       });
     });
     // Animation des fonctionnalités de classe
-    gsap.utils.toArray(".classroom-feature").forEach((feature, i) => {
+    gsap.utils.toArray(".feature-card").forEach((feature, i) => {
       gsap.from(feature, {
         scrollTrigger: {
           trigger: feature,
